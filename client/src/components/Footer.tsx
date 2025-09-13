@@ -2,20 +2,20 @@ import { Camera, Instagram, Facebook, Mail } from "lucide-react";
 
 export default function Footer() {
   return (
-    <footer className="bg-primary text-primary-foreground py-16">
+    <footer className="bg-primary text-primary-foreground py-12 sm:py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8">
           {/* Logo & Description */}
-          <div className="col-span-1 md:col-span-2">
+          <div className="col-span-1 sm:col-span-2 md:col-span-2">
             <div className="flex items-center space-x-2 mb-4">
-              <Camera className="h-8 w-8 text-accent" />
-              <span className="font-script text-2xl">Marie Dubois</span>
+              <Camera className="h-6 w-6 sm:h-8 sm:w-8 text-accent" />
+              <span className="font-script text-xl sm:text-2xl">Marie Dubois</span>
             </div>
-            <p className="text-primary-foreground/80 mb-6">
+            <p className="text-primary-foreground/80 mb-4 sm:mb-6 text-sm sm:text-base">
               Photographe professionnelle à Paris, spécialisée dans les mariages, 
               couples, familles et maternité. Capturons ensemble vos moments précieux.
             </p>
-            <div className="flex space-x-4">
+            <div className="flex space-x-3 sm:space-x-4">
               <a href="#" data-testid="link-instagram" className="p-2 bg-accent/10 rounded-full hover-elevate">
                 <Instagram className="h-5 w-5 text-accent" />
               </a>

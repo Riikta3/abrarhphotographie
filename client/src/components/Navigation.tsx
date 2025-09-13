@@ -22,8 +22,8 @@ export default function Navigation() {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <div className="flex items-center space-x-2">
-            <Camera className="h-8 w-8 text-accent" />
-            <span className="font-script text-2xl text-foreground">
+            <Camera className="h-6 w-6 sm:h-8 sm:w-8 text-accent" />
+            <span className="font-script text-xl sm:text-2xl text-foreground truncate">
               Marie Dubois
             </span>
           </div>
@@ -42,7 +42,7 @@ export default function Navigation() {
                 {item.label}
               </a>
             ))}
-            <Button data-testid="button-consultation" variant="default">
+            <Button data-testid="button-consultation" variant="default" className="hidden lg:flex">
               Consultation Gratuite
             </Button>
           </div>

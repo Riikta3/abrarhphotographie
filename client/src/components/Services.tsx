@@ -36,32 +36,32 @@ export default function Services() {
   return (
     <section className="py-24 bg-background">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="font-serif text-4xl md:text-5xl font-bold text-foreground mb-6">
+        <div className="text-center mb-12 sm:mb-16">
+          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-4 sm:mb-6">
             Mes Spécialités
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto px-4">
             Chaque session est unique et personnalisée selon vos envies. 
             Découvrez mes différentes spécialités photographiques.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
           {services.map((service, index) => (
             <Card key={index} className="hover-elevate overflow-hidden group" data-testid={`card-service-${service.title.toLowerCase()}`}>
-              <div className="relative h-64 overflow-hidden">
+              <div className="relative h-48 sm:h-56 md:h-64 overflow-hidden">
                 <img
                   src={service.image}
                   alt={service.title}
                   className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                <div className="absolute bottom-4 left-4 text-white">
-                  <h3 className="font-serif text-2xl font-bold">{service.title}</h3>
+                <div className="absolute bottom-3 sm:bottom-4 left-3 sm:left-4 text-white">
+                  <h3 className="font-serif text-xl sm:text-2xl font-bold">{service.title}</h3>
                 </div>
               </div>
               
-              <CardContent className="p-6">
+              <CardContent className="p-4 sm:p-6">
                 <p className="text-muted-foreground mb-4">{service.description}</p>
                 
                 <ul className="space-y-2 mb-6">
