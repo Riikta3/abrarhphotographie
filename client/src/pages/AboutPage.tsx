@@ -1,8 +1,9 @@
 import About from "@/components/About";
+import PageHeader from "@/components/PageHeader";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Camera, Heart, Star, Award } from "lucide-react";
-import photographerImage from "@assets/generated_images/Professional_photographer_portrait_c024e775.png";
+import aboutBackground from "@assets/generated_images/About_page_background_61b45b57.png";
 
 const values = [
   {
@@ -30,19 +31,12 @@ const values = [
 export default function AboutPage() {
   return (
     <div className="min-h-screen pt-16">
-      {/* Hero Section */}
-      <section className="py-24 bg-background">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h1 className="font-serif text-5xl md:text-6xl font-bold text-foreground mb-6">
-              À Propos de Marie
-            </h1>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Découvrez mon parcours, ma passion et ma philosophie de la photographie.
-            </p>
-          </div>
-        </div>
-      </section>
+      {/* Hero Section with Background */}
+      <PageHeader
+        title="À Propos de Marie"
+        subtitle="Découvrez mon parcours, ma passion et ma philosophie de la photographie."
+        backgroundImage={aboutBackground}
+      />
 
       {/* Main About Section */}
       <About />

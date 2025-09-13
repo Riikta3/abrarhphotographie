@@ -42,9 +42,6 @@ export default function Navigation() {
                 {item.label}
               </a>
             ))}
-            <Button data-testid="button-consultation" variant="default" className="hidden lg:flex">
-              Consultation Gratuite
-            </Button>
           </div>
 
           {/* Mobile Menu Button */}
@@ -80,9 +77,6 @@ export default function Navigation() {
                 {item.label}
               </a>
             ))}
-            <Button data-testid="button-mobile-consultation" className="w-full" variant="default">
-              Consultation Gratuite
-            </Button>
           </div>
         )}
       </div>

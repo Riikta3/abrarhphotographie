@@ -1,6 +1,8 @@
 import ContactForm from "@/components/ContactForm";
+import PageHeader from "@/components/PageHeader";
 import { Card, CardContent } from "@/components/ui/card";
 import { MapPin, Clock, Euro, Camera } from "lucide-react";
+import contactBackground from "@assets/generated_images/Contact_page_background_b496da34.png";
 
 const pricingInfo = [
   {
@@ -43,19 +45,12 @@ const locations = [
 export default function ContactPage() {
   return (
     <div className="min-h-screen pt-16">
-      {/* Hero Section */}
-      <section className="py-24 bg-background">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h1 className="font-serif text-5xl md:text-6xl font-bold text-foreground mb-6">
-              Contactez-Moi
-            </h1>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Parlons de votre projet et donnons vie à vos plus beaux souvenirs.
-            </p>
-          </div>
-        </div>
-      </section>
+      {/* Hero Section with Background */}
+      <PageHeader
+        title="Contactez-Moi"
+        subtitle="Parlons de votre projet et donnons vie à vos plus beaux souvenirs."
+        backgroundImage={contactBackground}
+      />
 
       {/* Quick Info */}
       <section className="py-16 bg-card">
@@ -101,10 +96,10 @@ export default function ContactPage() {
                   </div>
                 </div>
                 <h3 className="font-serif text-xl font-bold text-foreground mb-2">
-                  Consultation
+                  Devis
                 </h3>
                 <p className="text-muted-foreground">
-                  Totalement gratuite
+                  Totalement gratuit
                 </p>
               </CardContent>
             </Card>
