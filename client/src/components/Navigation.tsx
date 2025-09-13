@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { useLocation } from "wouter";
 import { Camera, Menu, X } from "lucide-react";
 import { useState } from "react";
+import ThemeToggle from "./ThemeToggle";
 
 export default function Navigation() {
   const [location] = useLocation();
@@ -29,7 +30,7 @@ export default function Navigation() {
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center space-x-6">
             {navItems.map((item) => (
               <a
                 key={item.path}
@@ -42,6 +43,7 @@ export default function Navigation() {
                 {item.label}
               </a>
             ))}
+            <ThemeToggle />
           </div>
 
           {/* Mobile Menu Button */}
@@ -77,6 +79,12 @@ export default function Navigation() {
                 {item.label}
               </a>
             ))}
+            <div className="pt-4 border-t border-border">
+              <div className="flex items-center justify-between">
+                <span className="text-sm text-muted-foreground">Thème</span>
+                <ThemeToggle />
+              </div>
+            </div>
           </div>
         )}
       </div>
