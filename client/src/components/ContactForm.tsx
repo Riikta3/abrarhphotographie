@@ -4,7 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { MapPin, Phone, Mail, Clock } from "lucide-react";
+import { MapPin, Phone, Mail, Clock, Instagram } from "lucide-react";
 import { useState } from "react";
 
 export default function ContactForm() {
@@ -92,10 +92,24 @@ export default function ContactForm() {
             <Card>
               <CardContent className="p-6">
                 <h3 className="font-medium mb-4">Réponse Rapide</h3>
-                <p className="text-muted-foreground text-sm">
+                <p className="text-muted-foreground text-sm mb-4">
                   Je réponds généralement dans les 24h. Pour les urgences, 
                   n'hésitez pas à m'appeler directement.
                 </p>
+                
+                <div className="border-t border-border pt-4">
+                  <h4 className="font-medium mb-3 text-sm">Suivez-moi aussi sur :</h4>
+                  <a 
+                    href="https://instagram.com/marie_dubois_photo" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center text-accent hover:text-accent/80 transition-colors text-sm"
+                    data-testid="link-contact-instagram"
+                  >
+                    <Instagram className="w-4 h-4 mr-2" />
+                    @marie_dubois_photo
+                  </a>
+                </div>
               </CardContent>
             </Card>
           </div>

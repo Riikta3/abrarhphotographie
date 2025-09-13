@@ -16,15 +16,38 @@ export default function Footer() {
               couples, familles et maternité. Capturons ensemble vos moments précieux.
             </p>
             <div className="flex space-x-3 sm:space-x-4">
-              <a href="#" data-testid="link-instagram" className="p-2 bg-accent/10 rounded-full hover-elevate">
+              <a 
+                href="https://instagram.com/marie_dubois_photo" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                data-testid="link-instagram" 
+                className="p-2 bg-accent/10 rounded-full hover-elevate"
+                title="Suivez-moi sur Instagram @marie_dubois_photo"
+              >
                 <Instagram className="h-5 w-5 text-accent" />
               </a>
               <a href="#" data-testid="link-facebook" className="p-2 bg-accent/10 rounded-full hover-elevate">
                 <Facebook className="h-5 w-5 text-accent" />
               </a>
-              <a href="#" data-testid="link-email-footer" className="p-2 bg-accent/10 rounded-full hover-elevate">
+              <a href="mailto:marie@photography.fr" data-testid="link-email-footer" className="p-2 bg-accent/10 rounded-full hover-elevate">
                 <Mail className="h-5 w-5 text-accent" />
               </a>
+            </div>
+            
+            {/* Instagram Handle */}
+            <div className="mt-4 pt-4 border-t border-primary-foreground/20">
+              <p className="text-primary-foreground/60 text-sm">
+                Suivez mes dernières créations : 
+                <a 
+                  href="https://instagram.com/marie_dubois_photo" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="ml-1 text-accent hover:text-accent/80 transition-colors font-medium"
+                  data-testid="link-instagram-handle"
+                >
+                  @marie_dubois_photo
+                </a>
+              </p>
             </div>
           </div>
 
