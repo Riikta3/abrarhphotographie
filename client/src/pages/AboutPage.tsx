@@ -30,7 +30,7 @@ const values = [
 
 export default function AboutPage() {
   return (
-    <div className="min-h-screen pt-16">
+    <div className="min-h-screen">
       {/* Hero Section with Background */}
       <PageHeader
         title="À Propos de Marie"

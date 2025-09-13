@@ -44,7 +44,7 @@ const locations = [
 
 export default function ContactPage() {
   return (
-    <div className="min-h-screen pt-16">
+    <div className="min-h-screen">
       {/* Hero Section with Background */}
       <PageHeader
         title="Contactez-Moi"
@@ -88,18 +88,18 @@ export default function ContactPage() {
               </CardContent>
             </Card>
 
-            <Card className="text-center" data-testid="quick-info-consultation">
+            <Card className="text-center" data-testid="quick-info-flexibility">
               <CardContent className="p-8">
                 <div className="flex justify-center mb-4">
                   <div className="p-3 bg-accent/10 rounded-full">
-                    <Euro className="h-6 w-6 text-accent" />
+                    <Camera className="h-6 w-6 text-accent" />
                   </div>
                 </div>
                 <h3 className="font-serif text-xl font-bold text-foreground mb-2">
-                  Devis
+                  Flexibilité
                 </h3>
                 <p className="text-muted-foreground">
-                  Totalement gratuit
+                  Séances sur-mesure
                 </p>
               </CardContent>
             </Card>

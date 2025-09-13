@@ -37,7 +37,7 @@ const portfolioSelection = [
 
 export default function GalleryPage() {
   return (
-    <div className="min-h-screen pt-16">
+    <div className="min-h-screen">
       {/* Hero Section with Background */}
       <PageHeader
         title="Ma Galerie"
@@ -98,12 +98,9 @@ export default function GalleryPage() {
           <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
             Contactez-moi pour discuter de votre projet et réserver votre séance photo.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex justify-center">
             <Button size="lg" data-testid="button-gallery-contact">
               Réserver une Séance
-            </Button>
-            <Button variant="outline" size="lg" data-testid="button-gallery-devis">
-              Demander un Devis
             </Button>
           </div>
         </div>

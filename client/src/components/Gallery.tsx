@@ -75,11 +75,6 @@ export default function Gallery() {
           ))}
         </div>
 
-        <div className="text-center mt-12">
-          <Button size="lg" variant="outline" data-testid="button-full-gallery">
-            Voir Toute la Galerie
-          </Button>
-        </div>
       </div>
     </section>
   );
