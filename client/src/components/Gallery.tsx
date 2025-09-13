@@ -4,19 +4,29 @@ import weddingImage from "@assets/generated_images/Elegant_French_wedding_photog
 import coupleImage from "@assets/generated_images/Romantic_Paris_couple_session_10bb35d5.png";
 import familyImage from "@assets/generated_images/Joyful_family_portrait_session_84976749.png";
 import maternityImage from "@assets/generated_images/Serene_maternity_portrait_a4b8ace0.png";
+import weddingChurch from "@assets/generated_images/Wedding_ceremony_in_church_38001092.png";
+import coupleSeineImage from "@assets/generated_images/Couple_engagement_Seine_riverbank_7223cd63.png";
+import familyLuxembourg from "@assets/generated_images/Family_portrait_Luxembourg_Gardens_2f08af26.png";
+import maternityStudio from "@assets/generated_images/Studio_maternity_portrait_3e65dd7d.png";
+import weddingReception from "@assets/generated_images/Wedding_reception_château_52d31cf8.png";
+import coupleTrocadero from "@assets/generated_images/Couple_Trocadéro_Eiffel_Tower_6338da06.png";
 
 const categories = ["Tous", "Mariages", "Couples", "Familles", "Maternité"];
 
-// todo: remove mock functionality - replace with real gallery images
 const galleryImages = [
-  { src: weddingImage, category: "Mariages", alt: "Mariage élégant" },
-  { src: coupleImage, category: "Couples", alt: "Séance couple Paris" },
-  { src: familyImage, category: "Familles", alt: "Portrait famille" },
-  { src: maternityImage, category: "Maternité", alt: "Séance maternité" },
-  { src: weddingImage, category: "Mariages", alt: "Cérémonie mariage" },
-  { src: coupleImage, category: "Couples", alt: "Couple romantique" },
-  { src: familyImage, category: "Familles", alt: "Famille heureuse" },
-  { src: maternityImage, category: "Maternité", alt: "Maternité douce" },
+  { src: weddingImage, category: "Mariages", alt: "Mariage élégant en extérieur" },
+  { src: weddingChurch, category: "Mariages", alt: "Cérémonie religieuse" },
+  { src: weddingReception, category: "Mariages", alt: "Réception de mariage" },
+  { src: coupleImage, category: "Couples", alt: "Séance couple romantique" },
+  { src: coupleSeineImage, category: "Couples", alt: "Engagement bord de Seine" },
+  { src: coupleTrocadero, category: "Couples", alt: "Couple Trocadéro" },
+  { src: familyImage, category: "Familles", alt: "Portrait famille joyeux" },
+  { src: familyLuxembourg, category: "Familles", alt: "Famille au Luxembourg" },
+  { src: maternityImage, category: "Maternité", alt: "Maternité en nature" },
+  { src: maternityStudio, category: "Maternité", alt: "Portrait maternité studio" },
+  // Dupliquer quelques images pour remplir la galerie
+  { src: weddingImage, category: "Mariages", alt: "Mariage champêtre" },
+  { src: coupleImage, category: "Couples", alt: "Amour parisien" },
 ];
 
 export default function Gallery() {
