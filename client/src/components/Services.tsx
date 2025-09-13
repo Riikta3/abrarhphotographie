@@ -46,9 +46,9 @@ export default function Services() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 items-stretch">
           {services.map((service, index) => (
-            <Card key={index} className="hover-elevate overflow-hidden group" data-testid={`card-service-${service.title.toLowerCase()}`}>
+            <Card key={index} className="hover-elevate overflow-hidden group h-full flex flex-col" data-testid={`card-service-${service.title.toLowerCase()}`}>
               <div className="relative h-48 sm:h-56 md:h-64 overflow-hidden">
                 <img
                   src={service.image}
@@ -61,7 +61,7 @@ export default function Services() {
                 </div>
               </div>
               
-              <CardContent className="p-4 sm:p-6">
+              <CardContent className="p-4 sm:p-6 flex flex-col flex-grow">
                 <p className="text-muted-foreground mb-4">{service.description}</p>
                 
                 <ul className="space-y-2 mb-6">
@@ -75,7 +75,7 @@ export default function Services() {
                 
                 <Button 
                   variant="outline" 
-                  className="w-full"
+                  className="w-full mt-auto"
                   data-testid={`button-service-${service.title.toLowerCase()}`}
                 >
                   En Savoir Plus

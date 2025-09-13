@@ -6,6 +6,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { MapPin, Phone, Mail, Clock, Instagram } from "lucide-react";
 import { useState } from "react";
+import { useToast } from "@/hooks/use-toast";
 
 export default function ContactForm() {
   const [formData, setFormData] = useState({
@@ -16,11 +17,55 @@ export default function ContactForm() {
     date: "",
     message: ""
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const { toast } = useToast();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Formulaire soumis:", formData);
-    // todo: remove mock functionality - implement real form submission
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const result = await response.json();
+
+      if (response.ok) {
+        toast({
+          title: "Message envoyé !",
+          description: result.message,
+        });
+        
+        // Reset form
+        setFormData({
+          nom: "",
+          email: "",
+          telephone: "",
+          service: "",
+          date: "",
+          message: ""
+        });
+      } else {
+        toast({
+          title: "Erreur",
+          description: result.error || "Une erreur est survenue",
+          variant: "destructive",
+        });
+      }
+    } catch (error) {
+      toast({
+        title: "Erreur",
+        description: "Impossible d'envoyer le message. Vérifiez votre connexion.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (field: string, value: string) => {
@@ -199,8 +244,14 @@ export default function ContactForm() {
                     />
                   </div>
 
-                  <Button type="submit" size="lg" className="w-full" data-testid="button-submit-contact">
-                    Envoyer ma Demande
+                  <Button 
+                    type="submit" 
+                    size="lg" 
+                    className="w-full" 
+                    data-testid="button-submit-contact"
+                    disabled={isSubmitting}
+                  >
+                    {isSubmitting ? "Envoi en cours..." : "Envoyer ma Demande"}
                   </Button>
                 </form>
               </CardContent>
