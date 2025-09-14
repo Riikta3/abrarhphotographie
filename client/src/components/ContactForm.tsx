@@ -88,7 +88,7 @@ export default function ContactForm() {
             <Card>
               <CardHeader>
                 <CardTitle className='font-serif text-2xl'>
-                  Informations
+                  Contact Photographe
                 </CardTitle>
               </CardHeader>
               <CardContent className='space-y-6'>
@@ -100,9 +100,9 @@ export default function ContactForm() {
                     <MapPin className='h-5 w-5 text-accent' />
                   </div>
                   <div>
-                    <h3 className='font-medium'>Localisation</h3>
+                    <h3 className='font-medium'>Zone d'Intervention</h3>
                     <p className='text-muted-foreground'>
-                      Seine-et-Marne & Île-de-France
+                      Photographe en Seine-et-Marne et Île-de-France
                     </p>
                   </div>
                 </div>
@@ -117,7 +117,7 @@ export default function ContactForm() {
                   <div>
                     <h3 className='font-medium'>Email</h3>
                     <p className='text-muted-foreground'>
-                      marie@photography.fr
+                      abrar@photography.fr
                     </p>
                   </div>
                 </div>
@@ -148,12 +148,13 @@ export default function ContactForm() {
               <CardContent className='p-6'>
                 <h3 className='font-medium mb-4'>Réponse Rapide</h3>
                 <p className='text-muted-foreground text-sm mb-4'>
-                  Je réponds généralement dans les 24h par email.
+                  Photographe professionnelle en Seine-et-Marne, je réponds
+                  généralement dans les 24h par email.
                 </p>
 
                 <div className='border-t border-border pt-4'>
                   <h4 className='font-medium mb-3 text-sm'>
-                    Suivez-moi aussi sur :
+                    Suivez-moi & contactez-moi aussi sur :
                   </h4>
                   <a
                     href='https://instagram.com/abrar.hphotographie'
@@ -175,7 +176,7 @@ export default function ContactForm() {
             <Card>
               <CardHeader>
                 <CardTitle className='font-serif text-2xl'>
-                  Demander un Devis
+                  Demander un Devis Gratuit
                 </CardTitle>
               </CardHeader>
               <CardContent>
@@ -230,14 +231,20 @@ export default function ContactForm() {
                         }
                       >
                         <SelectTrigger data-testid='select-service'>
-                          <SelectValue placeholder='Choisissez un service' />
+                          <SelectValue placeholder='Choisissez votre type de séance' />
                         </SelectTrigger>
                         <SelectContent>
-                          <SelectItem value='mariage'>Mariage</SelectItem>
-                          <SelectItem value='couple'>Couple</SelectItem>
-                          <SelectItem value='famille'>Famille</SelectItem>
-                          <SelectItem value='maternite'>Maternité</SelectItem>
-                          <SelectItem value='autre'>Autre</SelectItem>
+                          <SelectItem value='mariage'>
+                            Photographe Mariage
+                          </SelectItem>
+                          <SelectItem value='couple'>Séance Couple</SelectItem>
+                          <SelectItem value='famille'>
+                            Portrait Famille
+                          </SelectItem>
+                          <SelectItem value='maternite'>
+                            Séance Maternité
+                          </SelectItem>
+                          <SelectItem value='autre'>Autre Projet</SelectItem>
                         </SelectContent>
                       </Select>
                     </div>
@@ -248,9 +255,11 @@ export default function ContactForm() {
                     <Input
                       id='date'
                       type='date'
+                      required
                       value={formData.date}
                       onChange={(e) => handleChange("date", e.target.value)}
                       data-testid='input-date'
+                      className='[&::-webkit-calendar-picker-indicator]:opacity-60 [&::-webkit-calendar-picker-indicator]:cursor-pointer'
                     />
                   </div>
 
@@ -258,7 +267,7 @@ export default function ContactForm() {
                     <Label htmlFor='message'>Message *</Label>
                     <Textarea
                       id='message'
-                      placeholder='Parlez-moi de votre projet, vos envies, le lieu souhaité...'
+                      placeholder='Parlez-moi de votre projet photographique, vos envies, le lieu souhaité en Seine-et-Marne ou Île-de-France...'
                       value={formData.message}
                       onChange={(e) => handleChange("message", e.target.value)}
                       data-testid='textarea-message'
@@ -274,7 +283,9 @@ export default function ContactForm() {
                     data-testid='button-submit-contact'
                     disabled={isSubmitting}
                   >
-                    {isSubmitting ? "Envoi en cours..." : "Envoyer ma Demande"}
+                    {isSubmitting
+                      ? "Envoi en cours..."
+                      : "Demander mon Devis Gratuit"}
                   </Button>
                 </form>
               </CardContent>

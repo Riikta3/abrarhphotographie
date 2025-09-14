@@ -36,13 +36,13 @@ export default function ContactPage() {
     <div className='min-h-screen'>
       {/* Hero Section with Background */}
       <PageHeader
-        title='Contactez-Moi'
-        subtitle='Parlons de votre projet et donnons vie à vos plus beaux souvenirs.'
+        title='Contact Photographe'
+        subtitle='Photographe professionnelle en Seine-et-Marne, je serais ravie de vous accompagner dans la création de vos plus beaux souvenirs. Parlons de votre projet !'
         backgroundImage={contactBackground}
       />
 
       {/* Quick Info */}
-      <section className='py-16 bg-card'>
+      <section className='py-16 pb-0 bg-card'>
         <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
           <div className='grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto'>
             <Card
@@ -59,7 +59,7 @@ export default function ContactPage() {
                   Zone d'Intervention
                 </h3>
                 <p className='text-muted-foreground'>
-                  Seine-et-Marne & Île-de-France
+                  Photographe en Seine-et-Marne, Paris et Île-de-France
                 </p>
               </CardContent>
             </Card>
@@ -75,9 +75,11 @@ export default function ContactPage() {
                   </div>
                 </div>
                 <h3 className='font-serif text-xl font-bold text-foreground mb-2'>
-                  Flexibilité
+                  Séances Personnalisées
                 </h3>
-                <p className='text-muted-foreground'>Séances sur-mesure</p>
+                <p className='text-muted-foreground'>
+                  Mariages, couples, familles et maternité
+                </p>
               </CardContent>
             </Card>
           </div>
@@ -92,11 +94,12 @@ export default function ContactPage() {
         <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
           <div className='text-center mb-16'>
             <h2 className='font-serif text-4xl md:text-5xl font-bold text-foreground mb-6'>
-              Tarifs Indicatifs
+              Tarifs Photographe
             </h2>
             <p className='text-xl text-muted-foreground max-w-3xl mx-auto'>
-              Des formules adaptées à chaque projet. Devis personnalisé sur
-              demande.
+              Photographe professionnelle en Seine-et-Marne, je propose des
+              formules adaptées à chaque projet. Devis personnalisé et gratuit
+              pour tous vos événements.
             </p>
           </div>
 
@@ -131,8 +134,8 @@ export default function ContactPage() {
 
           <div className='text-center mt-8'>
             <p className='text-muted-foreground'>
-              * Tarifs TTC, déplacement inclus dans Paris. Devis gratuit pour
-              les projets sur-mesure.
+              * Tarifs TTC, déplacement inclus en Seine-et-Marne et Paris. Devis
+              gratuit pour tous vos projets photographiques.
             </p>
           </div>
         </div>
