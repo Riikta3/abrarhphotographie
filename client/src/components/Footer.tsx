@@ -10,7 +10,7 @@ export default function Footer() {
             <div className='flex items-center space-x-2 mb-4'>
               <Camera className='h-6 w-6 sm:h-8 sm:w-8 text-accent' />
               <span className='font-script text-xl sm:text-2xl'>
-                Marie Dubois
+                Abrar H Photographie
               </span>
             </div>
             <p className='text-primary-foreground/80 mb-4 sm:mb-6 text-sm sm:text-base'>
@@ -21,12 +21,14 @@ export default function Footer() {
             </p>
             <div className='flex space-x-3 sm:space-x-4'>
               <a
-                href='https://instagram.com/marie_dubois_photo'
+                href='https://instagram.com/abrar.hphotographie
+'
                 target='_blank'
                 rel='noopener noreferrer'
                 data-testid='link-instagram'
                 className='p-2 bg-accent/10 rounded-full hover-elevate'
-                title='Suivez-moi sur Instagram @marie_dubois_photo'
+                title='Suivez-moi sur Instagram @abrar.hphotographie
+'
               >
                 <Instagram className='h-5 w-5 text-accent' />
               </a>
@@ -51,13 +53,14 @@ export default function Footer() {
               <p className='text-primary-foreground/60 text-sm'>
                 Suivez mes dernières créations :
                 <a
-                  href='https://instagram.com/marie_dubois_photo'
+                  href='https://instagram.com/abrar.hphotographie
+'
                   target='_blank'
                   rel='noopener noreferrer'
                   className='ml-1 text-accent hover:text-accent/80 transition-colors font-medium'
                   data-testid='link-instagram-handle'
                 >
-                  @marie_dubois_photo
+                  @abrar.hphotographie
                 </a>
               </p>
             </div>
@@ -115,12 +118,13 @@ export default function Footer() {
               </li>
               <li data-testid='footer-instagram'>
                 <a
-                  href='https://instagram.com/marie_dubois_photo'
+                  href='https://instagram.com/abrar.hphotographie
+'
                   target='_blank'
                   rel='noopener noreferrer'
                   className='hover:text-accent transition-colors'
                 >
-                  @marie_dubois_photo
+                  @abrar.hphotographie
                 </a>
               </li>
               <li data-testid='footer-email'>marie@photography.fr</li>
@@ -130,7 +134,8 @@ export default function Footer() {
 
         <div className='border-t border-primary-foreground/20 mt-12 pt-8 text-center'>
           <p className='text-primary-foreground/60 text-sm'>
-            © 2024 Marie Dubois Photographie. Tous droits réservés.
+            © {new Date().getFullYear()} Abrar H Photographie. Tous droits
+            réservés.
           </p>
         </div>
       </div>

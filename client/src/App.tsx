@@ -1,5 +1,6 @@
 import Footer from "@/components/Footer";
 import Navigation from "@/components/Navigation";
+import ScrollToTop from "@/components/ScrollToTop";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import AboutPage from "@/pages/AboutPage";
@@ -45,6 +46,7 @@ function App() {
             <Router />
           </main>
           <Footer />
+          <ScrollToTop />
         </div>
         <Toaster />
       </TooltipProvider>

@@ -132,12 +132,12 @@ export default function ContactForm() {
                   <div>
                     <h3 className='font-medium'>Instagram</h3>
                     <a
-                      href='https://instagram.com/marie_dubois_photo'
+                      href='https://instagram.com/abrar.hphotographie'
                       target='_blank'
                       rel='noopener noreferrer'
                       className='text-muted-foreground hover:text-accent transition-colors'
                     >
-                      @marie_dubois_photo
+                      @abrar.hphotographie
                     </a>
                   </div>
                 </div>
@@ -156,14 +156,14 @@ export default function ContactForm() {
                     Suivez-moi aussi sur :
                   </h4>
                   <a
-                    href='https://instagram.com/marie_dubois_photo'
+                    href='https://instagram.com/abrar.hphotographie'
                     target='_blank'
                     rel='noopener noreferrer'
                     className='inline-flex items-center text-accent hover:text-accent/80 transition-colors text-sm'
                     data-testid='link-contact-instagram'
                   >
                     <Instagram className='w-4 h-4 mr-2' />
-                    @marie_dubois_photo
+                    @abrar.hphotographie{" "}
                   </a>
                 </div>
               </CardContent>
