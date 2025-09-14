@@ -1,8 +1,8 @@
-import { Camera, Facebook, Instagram, Mail } from "lucide-react";
+import { Camera, Instagram } from "lucide-react";
 
 export default function Footer() {
   return (
-    <footer className='bg-primary text-primary-foreground py-12 sm:py-16'>
+    <footer className='bg-primary text-primary-foreground py-12  sm:py-16'>
       <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
         <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8'>
           {/* Logo & Description */}
@@ -19,42 +19,14 @@ export default function Footer() {
               Zone d'intervention : Paris et Île-de-France. Capturons ensemble
               vos moments précieux.
             </p>
-            <div className='flex space-x-3 sm:space-x-4'>
-              <a
-                href='https://instagram.com/abrar.hphotographie
-'
-                target='_blank'
-                rel='noopener noreferrer'
-                data-testid='link-instagram'
-                className='p-2 bg-accent/10 rounded-full hover-elevate'
-                title='Suivez-moi sur Instagram @abrar.hphotographie
-'
-              >
-                <Instagram className='h-5 w-5 text-accent' />
-              </a>
-              <a
-                href='#'
-                data-testid='link-facebook'
-                className='p-2 bg-accent/10 rounded-full hover-elevate'
-              >
-                <Facebook className='h-5 w-5 text-accent' />
-              </a>
-              <a
-                href='mailto:marie@photography.fr'
-                data-testid='link-email-footer'
-                className='p-2 bg-accent/10 rounded-full hover-elevate'
-              >
-                <Mail className='h-5 w-5 text-accent' />
-              </a>
-            </div>
 
             {/* Instagram Handle */}
             <div className='mt-4 pt-4 border-t border-primary-foreground/20'>
-              <p className='text-primary-foreground/60 text-sm'>
-                Suivez mes dernières créations :
+              <div className='flex items-center text-primary-foreground/60 text-sm'>
+                <span>Suivez mes dernières créations :</span>
+                <br />
                 <a
-                  href='https://instagram.com/abrar.hphotographie
-'
+                  href='https://instagram.com/abrar.hphotographie'
                   target='_blank'
                   rel='noopener noreferrer'
                   className='ml-1 text-accent hover:text-accent/80 transition-colors font-medium'
@@ -62,7 +34,8 @@ export default function Footer() {
                 >
                   @abrar.hphotographie
                 </a>
-              </p>
+                <Instagram className='h-5 w-5 text-accent ml-2' />
+              </div>
             </div>
           </div>
 
