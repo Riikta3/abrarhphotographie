@@ -6,14 +6,32 @@ import { useEffect, useState } from "react";
  */
 export default function ScrollToTop() {
   const [showScrollTop, setShowScrollTop] = useState(false);
+  const [isLightboxOpen, setIsLightboxOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
       setShowScrollTop(window.scrollY > 300);
     };
 
+    /**
+     * Observer les changements de classe sur le body pour détecter l'ouverture du lightbox
+     */
+    const observer = new MutationObserver(() => {
+      setIsLightboxOpen(document.body.classList.contains("lightbox-open"));
+    });
+
+    // Observer les changements d'attributs sur le body
+    observer.observe(document.body, {
+      attributes: true,
+      attributeFilter: ["class"],
+    });
+
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      observer.disconnect();
+    };
   }, []);
 
   const scrollToTop = () => {
@@ -23,7 +41,8 @@ export default function ScrollToTop() {
     });
   };
 
-  if (!showScrollTop) return null;
+  // Ne pas afficher le bouton si on n'a pas scrollé ou si le lightbox est ouvert
+  if (!showScrollTop || isLightboxOpen) return null;
 
   return (
     <button
