@@ -131,7 +131,7 @@ export default function About({ showStats = true }: AboutProps) {
                 <div className='space-y-8'>
                   <div className='space-y-4 p-6 rounded-xl bg-background/30 backdrop-blur-sm border border-border/30'>
                     <h3 className='font-serif text-xl font-bold text-foreground flex items-center'>
-                      <div className='w-2 h-2 bg-accent rounded-full mr-3'></div>
+                      <div className='w-2 h-2 rounded-full mr-3'></div>
                       Une approche centrée sur l'émotion et le naturel
                     </h3>
                     <p className='text-base text-muted-foreground leading-relaxed'>
@@ -145,7 +145,7 @@ export default function About({ showStats = true }: AboutProps) {
 
                   <div className='space-y-4 p-6 rounded-xl bg-background/30 backdrop-blur-sm border border-border/30'>
                     <h3 className='font-serif text-xl font-bold text-foreground flex items-center'>
-                      <div className='w-2 h-2 bg-accent rounded-full mr-3'></div>
+                      <div className='w-2 h-2  rounded-full mr-3'></div>
                       Photographe lifestyle en Île-de-France
                     </h3>
                     <p className='text-base text-muted-foreground leading-relaxed'>
@@ -159,7 +159,7 @@ export default function About({ showStats = true }: AboutProps) {
 
                   <div className='space-y-4 p-6 rounded-xl bg-background/30 backdrop-blur-sm border border-border/30'>
                     <h3 className='font-serif text-xl font-bold text-foreground flex items-center'>
-                      <div className='w-2 h-2 bg-accent rounded-full mr-3'></div>
+                      <div className='w-2 h-2  rounded-full mr-3'></div>
                       Pourquoi faire appel à un photographe à Marne-la-Vallée
                       (Seine-et-Marne) ?
                     </h3>
@@ -175,7 +175,7 @@ export default function About({ showStats = true }: AboutProps) {
 
                   <div className='space-y-4 p-6 rounded-xl bg-background/30 backdrop-blur-sm border border-border/30'>
                     <h3 className='font-serif text-xl font-bold text-foreground flex items-center'>
-                      <div className='w-2 h-2 bg-accent rounded-full mr-3'></div>
+                      <div className='w-2 h-2  rounded-full mr-3'></div>
                       Contactez votre photographe de mariage à Marne-la-Vallée
                     </h3>
                     <p className='text-base text-muted-foreground leading-relaxed'>
@@ -244,7 +244,7 @@ export default function About({ showStats = true }: AboutProps) {
               <div className='flex flex-col sm:flex-row gap-4 justify-center items-center w-full'>
                 <Button
                   size='lg'
-                  className='bg-accent hover:bg-accent/90 text-accent-foreground font-medium px-6 sm:px-8 py-3 w-full sm:w-auto min-h-12 border-0 cursor-pointer'
+                  className='hover:bg-accent/90 font-medium px-6 sm:px-8 py-3 w-full sm:w-auto min-h-12 border-0 cursor-pointer'
                   data-testid='button-about-contact'
                 >
                   Travaillons Ensemble
@@ -282,7 +282,7 @@ export default function About({ showStats = true }: AboutProps) {
           <div className='flex flex-col sm:flex-row gap-4 justify-center items-center mt-16 w-full'>
             <Button
               size='lg'
-              className='bg-accent hover:bg-accent/90 text-accent-foreground font-medium px-6 sm:px-8 py-3 w-full sm:w-auto min-h-12 border-0 cursor-pointer'
+              className='hover:bg-accent/90 font-medium px-6 sm:px-8 py-3 w-full sm:w-auto min-h-12 border-0 cursor-pointer'
               data-testid='button-about-contact'
             >
               Travaillons Ensemble

@@ -133,6 +133,7 @@ export default function AboutPage() {
 
           <div className='text-center mt-12'>
             <Button
+              className='hover:bg-accent/90 font-medium px-6 sm:px-8 py-3 w-full sm:w-auto min-h-12 border-0 cursor-pointer'
               size='lg'
               data-testid='button-start-project'
             >
