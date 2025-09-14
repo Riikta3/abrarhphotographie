@@ -36,7 +36,7 @@ export default function AboutPage() {
     <div className='min-h-screen'>
       {/* Hero Section with Background */}
       <PageHeader
-        title='À Propos de Marie'
+        title="À Propos d'Abrar"
         subtitle='Découvrez mon parcours, ma passion et ma philosophie de la photographie.'
         backgroundImage={aboutBackground}
       />
@@ -133,11 +133,12 @@ export default function AboutPage() {
 
           <div className='text-center mt-12'>
             <Button
-              className='hover:bg-accent/90 font-medium px-6 sm:px-8 py-3 w-full sm:w-auto min-h-12 border-0 cursor-pointer'
+              className='font-medium px-6 sm:px-8 py-3 w-full sm:w-auto min-h-12 border-0 cursor-pointer'
               size='lg'
               data-testid='button-start-project'
+              asChild
             >
-              Commençons Votre Projet
+              <a href='/contact'>Commençons Votre Projet</a>
             </Button>
           </div>
         </div>

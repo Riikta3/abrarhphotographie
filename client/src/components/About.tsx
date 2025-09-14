@@ -108,11 +108,6 @@ export default function About({ showStats = true }: AboutProps) {
             <div className='space-y-8 w-full'>
               <div className='space-y-8'>
                 <div>
-                  <h2 className='font-serif text-4xl sm:text-5xl md:text-6xl font-bold text-foreground mb-6 leading-tight'>
-                    À Propos d'Abrar
-                  </h2>
-                  <div className='w-20 h-1 bg-gradient-to-r from-accent to-accent/50 rounded-full mb-8'></div>
-
                   <div className='space-y-6 text-lg sm:text-xl text-muted-foreground leading-relaxed'>
                     <p className='text-xl sm:text-2xl font-medium text-foreground leading-relaxed'>
                       Photographe professionnel basé à Marne-la-Vallée (77), je
@@ -244,16 +239,17 @@ export default function About({ showStats = true }: AboutProps) {
               <div className='flex flex-col sm:flex-row gap-4 justify-center items-center w-full'>
                 <Button
                   size='lg'
-                  className='hover:bg-accent/90 font-medium px-6 sm:px-8 py-3 w-full sm:w-auto min-h-12 border-0 cursor-pointer'
+                  className='font-medium px-6 sm:px-8 py-3 w-full sm:w-auto min-h-12 border-0 cursor-pointer'
                   data-testid='button-about-contact'
+                  asChild
                 >
-                  Travaillons Ensemble
+                  <a href='/contact'>Travaillons Ensemble</a>
                 </Button>
                 <Button
                   variant='outline'
                   size='lg'
                   asChild
-                  className='px-6 sm:px-8 py-3 w-full sm:w-auto min-h-12 cursor-pointer'
+                  className='px-6 sm:px-8 py-3 w-full sm:w-auto min-h-12 cursor-pointer hover:shadow-xs hover:translate-y-0 active:shadow-xs active:translate-y-0'
                   data-testid='button-about-instagram'
                 >
                   <a
@@ -282,16 +278,17 @@ export default function About({ showStats = true }: AboutProps) {
           <div className='flex flex-col sm:flex-row gap-4 justify-center items-center mt-16 w-full'>
             <Button
               size='lg'
-              className='hover:bg-accent/90 font-medium px-6 sm:px-8 py-3 w-full sm:w-auto min-h-12 border-0 cursor-pointer'
+              className='font-medium px-6 sm:px-8 py-3 w-full sm:w-auto min-h-12 border-0 cursor-pointer'
               data-testid='button-about-contact'
+              asChild
             >
-              Travaillons Ensemble
+              <a href='/contact'>Travaillons Ensemble</a>
             </Button>
             <Button
               variant='outline'
               size='lg'
               asChild
-              className='px-6 sm:px-8 py-3 w-full sm:w-auto min-h-12 cursor-pointer'
+              className='px-6 sm:px-8 py-3 w-full sm:w-auto min-h-12 cursor-pointer hover:shadow-xs hover:translate-y-0 active:shadow-xs active:translate-y-0'
               data-testid='button-about-instagram'
             >
               <a

@@ -104,7 +104,7 @@ export default function Hero() {
           <Button
             size='lg'
             data-testid='button-portfolio'
-            className='bg-accent hover:bg-accent/90 text-accent-foreground font-medium px-6 sm:px-8 py-3 w-full sm:w-auto min-h-12 border-0 cursor-pointer'
+            className='bg-accent  text-accent-foreground font-medium px-6 sm:px-8 py-3 w-full sm:w-auto min-h-12 border-0 cursor-pointer'
             asChild
           >
             <a href='/gallery'>
