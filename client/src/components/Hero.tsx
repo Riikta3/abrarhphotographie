@@ -83,42 +83,50 @@ export default function Hero() {
       <div className='absolute inset-0 bg-gradient-to-b from-black/40 via-black/50 to-black/60 z-10' />
 
       {/* Content */}
-      <div className='relative z-20 text-center text-white max-w-4xl mx-auto px-4 sm:px-6 lg:px-8'>
+      <div className='relative z-30 text-center text-white max-w-4xl mx-auto px-4 sm:px-6 lg:px-8'>
         <h1 className='font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 sm:mb-6 leading-tight'>
           Capturer Vos
           <span className='block font-script text-accent text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl'>
             Moments Précieux
           </span>
         </h1>
+        <div className='text-lg sm:text-xl md:text-2xl mb-6 sm:mb-8 text-white/90 max-w-2xl mx-auto leading-relaxed px-2 space-y-2'>
+          <p>
+            Photographe professionnelle à Marne-la-Vallée, en Île-de-France.
+          </p>
+          <p>
+            Immortalisez vos souvenirs les plus précieux avec une approche
+            naturelle et élégante pour chaque histoire.
+          </p>
+        </div>
 
-        <p className='text-lg sm:text-xl md:text-2xl mb-6 sm:mb-8 text-white/90 max-w-2xl mx-auto leading-relaxed px-2'>
-          Photographe professionnelle à Paris, spécialisée dans les mariages,
-          couples, familles et maternité avec élégance et authenticité.
-        </p>
-
-        <div className='flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center max-w-md sm:max-w-none mx-auto'>
+        <div className='flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center max-w-md sm:max-w-none mx-auto relative z-50'>
           <Button
             size='lg'
             data-testid='button-portfolio'
-            className='bg-accent hover:bg-accent/90 text-accent-foreground font-medium px-6 sm:px-8 py-3 w-full sm:w-auto min-h-12'
+            className='bg-accent hover:bg-accent/90 text-accent-foreground font-medium px-6 sm:px-8 py-3 w-full sm:w-auto min-h-12 border-0 cursor-pointer'
+            asChild
           >
-            Voir Mon Portfolio
-            <ArrowRight className='ml-2 h-4 w-4 sm:h-5 sm:w-5' />
+            <a href='/gallery'>
+              Voir Mon Portfolio
+              <ArrowRight className='ml-2 h-4 w-4 sm:h-5 sm:w-5' />
+            </a>
           </Button>
 
           <Button
             variant='outline'
             size='lg'
             data-testid='button-contact-hero'
-            className='bg-white/10 backdrop-blur-sm border-white/30 text-white hover:bg-white/20 px-6 sm:px-8 py-3 w-full sm:w-auto min-h-12'
+            className='bg-white/10 backdrop-blur-sm border-white/30 text-white hover:bg-white/20 px-6 sm:px-8 py-3 w-full sm:w-auto min-h-12 cursor-pointer'
+            asChild
           >
-            Me Contacter
+            <a href='/contact'>Me Contacter</a>
           </Button>
         </div>
 
         {/* Instagram Link */}
         <div className='mt-8 text-center'>
-          <p className='text-white/70 mb-3 text-sm sm:text-base'>
+          <p className='text-white/70 mb-0 text-sm sm:text-base'>
             Suivez mes dernières créations sur Instagram
           </p>
           <a
@@ -140,38 +148,41 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Carousel Controls - Above everything else - Hidden on mobile/tablet */}
-      <div className='absolute inset-0 z-50 pointer-events-none hidden lg:block'>
+      {/* Carousel Controls - Hidden on mobile/tablet */}
+      <div className='hidden lg:block'>
+        {/* Hover Detection Area - Invisible but detects hover */}
+        <div className='absolute inset-0 pointer-events-none group'></div>
+
         {/* Navigation Arrows */}
         <button
-          className='absolute left-6 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white rounded-full w-12 h-12 flex items-center justify-center transition-all duration-200 pointer-events-auto'
+          className='absolute left-6 top-1/2 -translate-y-1/2 bg-black/20 hover:bg-black/40 text-white/70 hover:text-white rounded-full w-10 h-10 flex items-center justify-center transition-all duration-300 opacity-0 group-hover:opacity-100 z-40'
           onClick={goToPrevious}
           data-testid='carousel-prev'
           aria-label='Image précédente'
           type='button'
         >
-          <ChevronLeft className='h-6 w-6' />
+          <ChevronLeft className='h-5 w-5' />
         </button>
 
         <button
-          className='absolute right-6 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white rounded-full w-12 h-12 flex items-center justify-center transition-all duration-200 pointer-events-auto'
+          className='absolute right-6 top-1/2 -translate-y-1/2 bg-black/20 hover:bg-black/40 text-white/70 hover:text-white rounded-full w-10 h-10 flex items-center justify-center transition-all duration-300 opacity-0 group-hover:opacity-100 z-40'
           onClick={goToNext}
           data-testid='carousel-next'
           aria-label='Image suivante'
           type='button'
         >
-          <ChevronRight className='h-6 w-6' />
+          <ChevronRight className='h-5 w-5' />
         </button>
 
         {/* Dots Indicator */}
-        <div className='absolute bottom-8 left-1/2 -translate-x-1/2 flex space-x-3 pointer-events-auto'>
+        <div className='absolute bottom-8 left-1/2 -translate-x-1/2 flex space-x-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-40'>
           {carouselImages.map((_, index) => (
             <button
               key={index}
-              className={`w-4 h-4 rounded-full transition-all duration-200 ${
+              className={`w-3 h-3 rounded-full transition-all duration-300 ${
                 index === currentIndex
-                  ? "bg-amber-500"
-                  : "bg-white/50 hover:bg-white/80"
+                  ? "bg-amber-400/80"
+                  : "bg-white/30 hover:bg-white/60"
               }`}
               onClick={() => goToSlide(index)}
               data-testid={`carousel-dot-${index}`}
@@ -183,7 +194,7 @@ export default function Hero() {
 
         {/* Auto-play Control */}
         <button
-          className='absolute top-6 right-6 bg-black/50 hover:bg-black/70 text-white rounded-full w-10 h-10 flex items-center justify-center transition-all duration-200 pointer-events-auto'
+          className='absolute top-6 right-6 bg-black/20 hover:bg-black/40 text-white/70 hover:text-white rounded-full w-8 h-8 flex items-center justify-center transition-all duration-300 opacity-0 group-hover:opacity-100 z-40'
           onClick={() => setIsAutoPlay(!isAutoPlay)}
           aria-label={
             isAutoPlay ? "Pause le carousel" : "Reprendre le carousel"
@@ -191,9 +202,9 @@ export default function Hero() {
           type='button'
         >
           {isAutoPlay ? (
-            <Pause className='h-4 w-4' />
+            <Pause className='h-3 w-3' />
           ) : (
-            <Play className='h-4 w-4 ml-0.5' />
+            <Play className='h-3 w-3 ml-0.5' />
           )}
         </button>
       </div>
