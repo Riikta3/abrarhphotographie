@@ -52,8 +52,8 @@ export default function GalleryPage() {
     <div className='min-h-screen'>
       {/* Hero Section with Background */}
       <PageHeader
-        title='Portfolio Photographe - Seine-et-Marne & Paris'
-        subtitle="Découvrez mes créations photographiques en Seine-et-Marne et Paris. Mariages, couples, familles et maternité : chaque image raconte une histoire unique d'amour et d'émotion."
+        title='Portfolio Photographe'
+        subtitle="Découvrez mes créations photographiques en Seine-et-Marne et Île-de-France. Mariages, couples, familles et maternité : chaque image raconte une histoire unique d'amour et d'émotion."
         backgroundImage={galleryBackground}
       />
 
@@ -117,9 +117,9 @@ export default function GalleryPage() {
             </span>
           </h2>
           <p className='text-xl text-muted-foreground mb-8 max-w-2xl mx-auto'>
-            Photographe en Seine-et-Marne et Paris, je serais ravie de vous
-            accompagner dans la création de vos plus beaux souvenirs. Parlons de
-            votre projet !
+            Photographe en Seine-et-Marne et Île-de-France, je serais ravie de
+            vous accompagner dans la création de vos plus beaux souvenirs.
+            Parlons de votre projet !
           </p>
           <div className='flex justify-center'>
             <Button
