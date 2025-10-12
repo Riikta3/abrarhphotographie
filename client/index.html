@@ -98,19 +98,40 @@
         "name": "Abrar H Photographie",
         "description": "Photographe professionnelle spécialisée dans les mariages, couples, familles et maternité en Seine-et-Marne et Île-de-France",
         "url": "https://abrarh-photographie.fr",
-        "email": "marie@photography.fr",
+        "email": "abrar@photography.fr",
         "address": {
           "@type": "PostalAddress",
+          "addressLocality": "Marne-la-Vallée",
           "addressRegion": "Seine-et-Marne",
+          "postalCode": "77",
           "addressCountry": "FR"
         },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": "48.8566",
+          "longitude": "2.3522"
+        },
         "areaServed": [
-          "Paris",
-          "Seine-et-Marne",
-          "Marne-la-Vallée",
-          "Île-de-France"
+          {
+            "@type": "City",
+            "name": "Paris"
+          },
+          {
+            "@type": "AdministrativeArea",
+            "name": "Seine-et-Marne"
+          },
+          {
+            "@type": "City",
+            "name": "Marne-la-Vallée"
+          },
+          {
+            "@type": "AdministrativeArea",
+            "name": "Île-de-France"
+          }
         ],
+        "sameAs": ["https://instagram.com/abrar.hphotographie"],
         "serviceType": "Photographie",
+        "priceRange": "$$",
         "hasOfferCatalog": {
           "@type": "OfferCatalog",
           "name": "Services de Photographie",
@@ -119,28 +140,32 @@
               "@type": "Offer",
               "itemOffered": {
                 "@type": "Service",
-                "name": "Photographie de Mariage"
+                "name": "Photographie de Mariage",
+                "description": "Reportage photo de mariage complet en Seine-et-Marne et Île-de-France"
               }
             },
             {
               "@type": "Offer",
               "itemOffered": {
                 "@type": "Service",
-                "name": "Séance Couple"
+                "name": "Séance Couple",
+                "description": "Séance photo couple et engagement à Paris et Île-de-France"
               }
             },
             {
               "@type": "Offer",
               "itemOffered": {
                 "@type": "Service",
-                "name": "Photographie Famille"
+                "name": "Photographie Famille",
+                "description": "Portrait de famille lifestyle en Seine-et-Marne"
               }
             },
             {
               "@type": "Offer",
               "itemOffered": {
                 "@type": "Service",
-                "name": "Photographie Maternité"
+                "name": "Photographie Maternité",
+                "description": "Séance photo maternité et grossesse en Île-de-France"
               }
             }
           ]
@@ -166,11 +191,6 @@
     <script
       type="module"
       src="/src/main.tsx"
-    ></script>
-    <!-- This is a replit script which adds a banner on the top of the page when opened in development mode outside the replit environment -->
-    <script
-      type="text/javascript"
-      src="https://replit.com/public/js/replit-dev-banner.js"
     ></script>
   </body>
 </html>
