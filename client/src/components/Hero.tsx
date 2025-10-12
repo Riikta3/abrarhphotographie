@@ -85,19 +85,17 @@ export default function Hero() {
       {/* Content */}
       <div className='relative z-30 text-center text-white max-w-4xl mx-auto px-4 sm:px-6 lg:px-8'>
         <h1 className='font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 sm:mb-6 leading-tight'>
-          Capturer Vos
+          Photographe <br />
+          Mariage & Famille
           <span className='block font-script text-accent text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl'>
-            Moments Précieux
+            Storytelling
           </span>
         </h1>
         <div className='text-lg sm:text-xl md:text-2xl mb-6 sm:mb-8 text-white/90 max-w-2xl mx-auto leading-relaxed px-2 space-y-2'>
-          <p>
-            Photographe professionnelle à Marne-la-Vallée, en Île-de-France.
-          </p>
-          <p>
-            Immortalisez vos souvenirs les plus précieux avec une approche
-            naturelle et élégante pour chaque histoire.
-          </p>
+          <h2>
+            Basé en Seine-et-Marne (77) - Interventions à Paris, Marne-la-Vallée
+            et toute l'Île-de-France.
+          </h2>
         </div>
 
         <div className='flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center max-w-md sm:max-w-none mx-auto relative z-50'>

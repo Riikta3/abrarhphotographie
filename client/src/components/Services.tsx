@@ -8,9 +8,13 @@ const services = [
   {
     title: "Photographe Mariage",
     description:
-      "Votre histoire d'amour mérite d'être racontée avec passion. Photographe de mariage en Seine-et-Marne, j'immortalise chaque émotion, chaque regard complice, chaque rire partagé pour que vous puissiez revivre à l'infini ce jour magique dans les plus beaux lieux d'Île-de-France.",
+      "Le jour de votre mariage est le premier chapitre de votre histoire. En tant que photographe de mariage en Seine-et-Marne et à Paris, mon rôle est d'en être le narrateur visuel. Je ne me contente pas de documenter l'événement ; je réalise un reportage de mariage authentique qui capture les silences, les regards complices et ces détails qui rendent votre journée unique. Pour un souvenir qui va au-delà des apparences, que votre union ait lieu dans un château ou un lieu plus intimiste en Île-de-France.",
     image: weddingImage,
-    features: ["Cérémonie & Réception", "Séance couple", "Retouches incluses"],
+    features: [
+      "Reportage complet (des préparatifs à la soirée)",
+      "Séance couple intimiste le jour J",
+      "Galerie privée en ligne & post-traitement signature",
+    ],
     keywords:
       "photographe mariage Seine-et-Marne, mariage Île-de-France, photographe cérémonie",
   },
@@ -52,10 +56,9 @@ export default function Services() {
             Mes Spécialités
           </h2>
           <p className='text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto px-4'>
-            Photographe à Marne-la-Vallée, je vous accompagne pour immortaliser
-            vos plus beaux souvenirs avec authenticité et émotion. Chaque
-            histoire est unique, chaque moment précieux. Spécialisée dans les
-            mariages, couples, familles et maternité en Île-de-France.
+            Au-delà de la pose, je raconte la vérité de vos liens. Ces moments
+            sincères deviendront vos plus beaux souvenirs, ceux qui traversent
+            le temps. Ensemble, créons les images que vous transmettrez.
           </p>
         </div>
 
