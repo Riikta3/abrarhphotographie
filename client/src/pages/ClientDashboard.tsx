@@ -47,7 +47,7 @@ export default function ClientDashboard() {
         {/* Header */}
         <div className='text-center space-y-4'>
           <h1 className='text-4xl font-bold text-slate-900'>
-            Dashboard Client - ParisLens
+            Dashboard Client - Abrarhphotographie
           </h1>
           <p className='text-lg text-slate-600'>
             Suivez l'avancée de votre site web en temps réel
@@ -162,7 +162,7 @@ export default function ClientDashboard() {
                   target='_blank'
                   rel='noopener noreferrer'
                 >
-                  https://parislens.railway.app
+                  https://abrarhphotographie.netlify.app
                 </a>
                 <Badge
                   variant='default'
@@ -179,17 +179,17 @@ export default function ClientDashboard() {
                   target='_blank'
                   rel='noopener noreferrer'
                 >
-                  https://parislens-staging.railway.app
+                  https://abrarhphotographie-staging.netlify.app
                 </a>
                 <Badge variant='secondary'>🧪 Test</Badge>
               </div>
             </div>
             <div className='mt-4 p-3 bg-blue-50 rounded-lg'>
               <h5 className='font-medium text-blue-900 mb-2'>
-                🚀 Railway Dashboard
+                🚀 Netlify Dashboard
               </h5>
               <p className='text-sm text-blue-700 mb-2'>
-                Suivez les déploiements en temps réel sur Railway
+                Suivez les déploiements en temps réel sur Netlify
               </p>
               <a
                 href='#'
@@ -197,7 +197,7 @@ export default function ClientDashboard() {
                 target='_blank'
                 rel='noopener noreferrer'
               >
-                Ouvrir le dashboard Railway →
+                Ouvrir le dashboard Netlify →
               </a>
             </div>
           </CardContent>
@@ -224,7 +224,7 @@ export default function ClientDashboard() {
               <div>
                 <h4 className='font-medium mb-2'>📧 Contact Direct</h4>
                 <p className='text-sm text-slate-600'>
-                  Email: contact@parislens.fr
+                  Email: contact@abrarhphotographie.fr
                 </p>
                 <p className='text-sm text-slate-600'>
                   Téléphone: +33 1 23 45 67 89

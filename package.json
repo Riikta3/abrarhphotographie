@@ -9,13 +9,7 @@
     "start": "NODE_ENV=production node dist/index.js",
     "check": "tsc",
     "db:push": "drizzle-kit push",
-    "db:migrate": "node scripts/migrate.js",
-    "deploy": "chmod +x scripts/deploy.sh && ./scripts/deploy.sh",
-    "railway:deploy": "railway up",
-    "railway:logs": "railway logs",
-    "railway:status": "railway status",
-    "notify": "node scripts/notify-client.js",
-    "deploy:full": "npm run railway:deploy && npm run db:migrate && npm run notify"
+    "db:migrate": "node scripts/migrate.js"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",

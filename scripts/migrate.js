@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 /**
- * Script de migration de base de données pour Railway
+ * Script de migration de base de données
  * Exécute les migrations Drizzle et initialise la base de données
  */
 
