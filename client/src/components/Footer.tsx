@@ -1,4 +1,5 @@
 import { Camera, Instagram } from "lucide-react";
+import { Link } from "wouter";
 
 export default function Footer() {
   return (
@@ -42,42 +43,42 @@ export default function Footer() {
           {/* Services */}
           <div>
             <h3 className='font-serif text-lg font-semibold mb-4'>Services</h3>
-            <ul className='space-y-2 text-primary-foreground/80'>
+            <ul className='space-y-2 text-primary-foreground/80 text-sm'>
               <li>
-                <a
-                  href='#'
+                <Link
+                  to='/galerie?categorie=Mariages'
                   data-testid='link-footer-mariages'
                   className='hover:text-accent transition-colors'
                 >
                   Mariages
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href='#'
+                <Link
+                  to='/galerie?categorie=Couples'
                   data-testid='link-footer-couples'
                   className='hover:text-accent transition-colors'
                 >
                   Couples
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href='#'
+                <Link
+                  to='/galerie?categorie=Familles'
                   data-testid='link-footer-familles'
                   className='hover:text-accent transition-colors'
                 >
                   Familles
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href='#'
+                <Link
+                  to='/galerie?categorie=Maternité'
                   data-testid='link-footer-maternite'
                   className='hover:text-accent transition-colors'
                 >
                   Maternité
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -105,11 +106,37 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className='border-t border-primary-foreground/20 mt-12 pt-8 text-center'>
-          <p className='text-primary-foreground/60 text-sm'>
-            © {new Date().getFullYear()} Abrar H Photographie. Tous droits
-            réservés.
-          </p>
+        {/* Legal Links Section */}
+        <div className='border-t border-primary-foreground/20 mt-12 pt-8'>
+          <div className='flex flex-col sm:flex-row justify-between items-center gap-4'>
+            <p className='text-primary-foreground/60 text-sm text-center sm:text-left'>
+              © {new Date().getFullYear()} Abrar H Photographie. Tous droits
+              réservés.
+            </p>
+            <div className='flex flex-wrap justify-center gap-4 sm:gap-6 text-sm'>
+              <Link
+                to='/mentions-legales'
+                className='text-primary-foreground/60 hover:text-accent transition-colors'
+                data-testid='link-footer-legal'
+              >
+                Mentions légales
+              </Link>
+              <Link
+                to='/politique-de-confidentialite'
+                className='text-primary-foreground/60 hover:text-accent transition-colors'
+                data-testid='link-footer-privacy'
+              >
+                Confidentialité
+              </Link>
+              <Link
+                to='/conditions-utilisation'
+                className='text-primary-foreground/60 hover:text-accent transition-colors'
+                data-testid='link-footer-terms'
+              >
+                CGU
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
     </footer>

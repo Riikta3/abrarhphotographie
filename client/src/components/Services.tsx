@@ -7,8 +7,11 @@ import coupleImage from "@assets/generated_images/Romantic_Paris_couple_session_
 const services = [
   {
     title: "Photographe Mariage",
-    description:
-      "Le jour de votre mariage est le premier chapitre de votre histoire. En tant que photographe de mariage en Seine-et-Marne et à Paris, mon rôle est d'en être le narrateur visuel. Je ne me contente pas de documenter l'événement ; je réalise un reportage de mariage authentique qui capture les silences, les regards complices et ces détails qui rendent votre journée unique. Pour un souvenir qui va au-delà des apparences, que votre union ait lieu dans un château ou un lieu plus intimiste en Île-de-France.",
+    description: [
+      "Le jour de votre mariage est le premier chapitre de votre histoire. En tant que photographe de mariage en Seine-et-Marne et à Paris, mon rôle est d'en être le narrateur visuel.",
+      "Je ne me contente pas de documenter l'événement; je réalise un reportage de mariage authentique qui capture les silences, les regards complices et ces détails qui rendent votre journée unique.",
+      "Pour un souvenir qui va au-delà des apparences, que votre union ait lieu dans un château ou un lieu plus intimiste en Île-de-France.",
+    ],
     image: weddingImage,
     features: [
       "Reportage complet (des préparatifs à la soirée)",
@@ -85,9 +88,15 @@ export default function Services() {
               </div>
 
               <CardContent className='p-4 sm:p-6 flex flex-col flex-grow'>
-                <p className='text-muted-foreground mb-4'>
-                  {service.description}
-                </p>
+                <div className='text-muted-foreground mb-4 space-y-3'>
+                  {Array.isArray(service.description) ? (
+                    service.description.map((paragraph, idx) => (
+                      <p key={idx}>{paragraph}</p>
+                    ))
+                  ) : (
+                    <p>{service.description}</p>
+                  )}
+                </div>
 
                 <ul className='space-y-2 mb-6'>
                   {service.features.map((feature, idx) => (

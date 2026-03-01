@@ -11,6 +11,7 @@ import {
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
+import { submitContactForm, type ContactSubmissionData } from "@/lib/strapiApi";
 import { Instagram, Mail, MapPin } from "lucide-react";
 import { useState } from "react";
 
@@ -23,51 +24,62 @@ export default function ContactForm() {
     date: "",
     message: "",
   });
+  const [honeypot, setHoneypot] = useState(""); // Honeypot field to catch bots
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
 
+  /**
+   * Handle contact form submission via Strapi API
+   * @param e - Form submit event
+   */
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
 
     try {
-      const response = await fetch("/api/contact", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
+      // Map form values to Strapi enum values
+      const serviceMap: Record<string, ContactSubmissionData["service"]> = {
+        mariage: "Mariage",
+        couple: "Couple",
+        famille: "Famille",
+        maternite: "Maternité",
+        autre: "Autre",
+      };
+
+      const submissionData: ContactSubmissionData & { website?: string } = {
+        nom: formData.nom,
+        email: formData.email,
+        telephone: formData.telephone || undefined,
+        service: serviceMap[formData.service] || undefined,
+        date: formData.date || undefined,
+        message: formData.message,
+        website: honeypot, // Honeypot field - should be empty for real users
+      };
+
+      const result = await submitContactForm(submissionData);
+
+      toast({
+        title: "Message envoyé !",
+        description: result.message,
       });
 
-      const result = await response.json();
-
-      if (response.ok) {
-        toast({
-          title: "Message envoyé !",
-          description: result.message,
-        });
-
-        // Reset form
-        setFormData({
-          nom: "",
-          email: "",
-          telephone: "",
-          service: "",
-          date: "",
-          message: "",
-        });
-      } else {
-        toast({
-          title: "Erreur",
-          description: result.error || "Une erreur est survenue",
-          variant: "destructive",
-        });
-      }
+      // Reset form
+      setFormData({
+        nom: "",
+        email: "",
+        telephone: "",
+        service: "",
+        date: "",
+        message: "",
+      });
+      setHoneypot("");
     } catch (error) {
       toast({
         title: "Erreur",
         description:
-          "Impossible d'envoyer le message. Vérifiez votre connexion.",
+          error instanceof Error
+            ? error.message
+            : "Impossible d'envoyer le message. Vérifiez votre connexion.",
         variant: "destructive",
       });
     } finally {
@@ -184,6 +196,23 @@ export default function ContactForm() {
                   onSubmit={handleSubmit}
                   className='space-y-4 sm:space-y-6'
                 >
+                  {/* Honeypot field - hidden from real users, visible to bots */}
+                  <input
+                    type="text"
+                    name="website"
+                    value={honeypot}
+                    onChange={(e) => setHoneypot(e.target.value)}
+                    style={{ 
+                      position: 'absolute',
+                      left: '-9999px',
+                      width: '1px',
+                      height: '1px',
+                    }}
+                    tabIndex={-1}
+                    autoComplete="off"
+                    aria-hidden="true"
+                  />
+                  
                   <div className='grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6'>
                     <div>
                       <Label htmlFor='nom'>Nom complet *</Label>
