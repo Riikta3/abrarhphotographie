@@ -18,7 +18,7 @@ export default function PrivacyPolicyPage() {
     <>
       <PageHeader
         title='Politique de Confidentialité'
-        description='Protection de vos données personnelles'
+        subtitle='Protection de vos données personnelles'
       />
 
       <section className='py-16 sm:py-20'>

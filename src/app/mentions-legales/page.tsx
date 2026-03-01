@@ -18,7 +18,7 @@ export default function LegalNoticePage() {
     <>
       <PageHeader
         title='Mentions Légales'
-        description='Informations légales sur le site'
+        subtitle="Informations légales concernant l'entreprise"
       />
 
       <section className='py-16 sm:py-20'>
