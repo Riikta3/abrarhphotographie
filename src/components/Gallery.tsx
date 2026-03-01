@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { ChevronLeft, ChevronRight, X } from "lucide-react";
 import NextImage from "next/image";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 const coupleSeineImage =
   "/assets/generated_images/Couple_engagement_Seine_riverbank_7223cd63.png";
@@ -112,51 +112,54 @@ export default function Gallery() {
   /**
    * Ferme le lightbox
    */
-  const closeLightbox = () => {
+  const closeLightbox = useCallback(() => {
     setLightboxImage(null);
-  };
+  }, []);
 
   /**
    * Navigue vers l'image précédente dans le lightbox
    */
-  const previousImage = () => {
+  const previousImage = useCallback(() => {
     if (lightboxImage !== null) {
       setLightboxImage(
         lightboxImage > 0 ? lightboxImage - 1 : filteredImages.length - 1,
       );
     }
-  };
+  }, [lightboxImage, filteredImages.length]);
 
   /**
    * Navigue vers l'image suivante dans le lightbox
    */
-  const nextImage = () => {
+  const nextImage = useCallback(() => {
     if (lightboxImage !== null) {
       setLightboxImage(
         lightboxImage < filteredImages.length - 1 ? lightboxImage + 1 : 0,
       );
     }
-  };
+  }, [lightboxImage, filteredImages.length]);
 
   /**
    * Gère la navigation au clavier dans le lightbox
    * @param event - Événement clavier
    */
-  const handleKeyDown = (event: KeyboardEvent) => {
-    if (lightboxImage === null) return;
+  const handleKeyDown = useCallback(
+    (event: KeyboardEvent) => {
+      if (lightboxImage === null) return;
 
-    switch (event.key) {
-      case "Escape":
-        closeLightbox();
-        break;
-      case "ArrowLeft":
-        previousImage();
-        break;
-      case "ArrowRight":
-        nextImage();
-        break;
-    }
-  };
+      switch (event.key) {
+        case "Escape":
+          closeLightbox();
+          break;
+        case "ArrowLeft":
+          previousImage();
+          break;
+        case "ArrowRight":
+          nextImage();
+          break;
+      }
+    },
+    [lightboxImage, closeLightbox, previousImage, nextImage],
+  );
 
   // Ajouter les écouteurs d'événements clavier
   useEffect(() => {
@@ -164,7 +167,7 @@ export default function Gallery() {
     return () => {
       document.removeEventListener("keydown", handleKeyDown);
     };
-  }, [lightboxImage]);
+  }, [handleKeyDown]);
 
   // Gérer l'affichage du scroll to top quand le lightbox est ouvert
   useEffect(() => {

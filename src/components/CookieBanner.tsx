@@ -26,14 +26,8 @@ import { useState } from "react";
  * Shows at bottom of screen until user makes a choice
  */
 export default function CookieBanner() {
-  const {
-    showBanner,
-    acceptAll,
-    acceptNecessary,
-    consent,
-    updateConsent,
-    hasConsent,
-  } = useConsent();
+  const { showBanner, acceptAll, acceptNecessary, updateConsent, hasConsent } =
+    useConsent();
   const [showSettings, setShowSettings] = useState(false);
 
   if (!showBanner) return null;

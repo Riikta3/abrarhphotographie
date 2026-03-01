@@ -134,38 +134,56 @@ export function useConsent() {
   };
 }
 
+type GtagFn = (
+  command: "consent" | "config" | "event" | "js",
+  /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
+  ...args: any[]
+) => void;
+
 function enableAnalytics() {
-  if (typeof window !== "undefined" && (window as any).gtag) {
-    (window as any).gtag("consent", "update", {
-      analytics_storage: "granted",
-    });
+  if (typeof window !== "undefined") {
+    const gtag = (window as unknown as { gtag: GtagFn }).gtag;
+    if (gtag) {
+      gtag("consent", "update", {
+        analytics_storage: "granted",
+      });
+    }
   }
 }
 
 function disableAnalytics() {
-  if (typeof window !== "undefined" && (window as any).gtag) {
-    (window as any).gtag("consent", "update", {
-      analytics_storage: "denied",
-    });
+  if (typeof window !== "undefined") {
+    const gtag = (window as unknown as { gtag: GtagFn }).gtag;
+    if (gtag) {
+      gtag("consent", "update", {
+        analytics_storage: "denied",
+      });
+    }
   }
 }
 
 function enableMarketing() {
-  if (typeof window !== "undefined" && (window as any).gtag) {
-    (window as any).gtag("consent", "update", {
-      ad_storage: "granted",
-      ad_user_data: "granted",
-      ad_personalization: "granted",
-    });
+  if (typeof window !== "undefined") {
+    const gtag = (window as unknown as { gtag: GtagFn }).gtag;
+    if (gtag) {
+      gtag("consent", "update", {
+        ad_storage: "granted",
+        ad_user_data: "granted",
+        ad_personalization: "granted",
+      });
+    }
   }
 }
 
 function disableMarketing() {
-  if (typeof window !== "undefined" && (window as any).gtag) {
-    (window as any).gtag("consent", "update", {
-      ad_storage: "denied",
-      ad_user_data: "denied",
-      ad_personalization: "denied",
-    });
+  if (typeof window !== "undefined") {
+    const gtag = (window as unknown as { gtag: GtagFn }).gtag;
+    if (gtag) {
+      gtag("consent", "update", {
+        ad_storage: "denied",
+        ad_user_data: "denied",
+        ad_personalization: "denied",
+      });
+    }
   }
 }

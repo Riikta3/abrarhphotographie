@@ -195,9 +195,11 @@ export default function About({ showStats = true }: AboutProps) {
             {/* Image */}
             <div className='relative group'>
               <div className='relative overflow-hidden rounded-2xl shadow-2xl'>
-                <img
+                <NextImage
                   src={photographerImage}
                   alt='Abrar H, Photographe Professionnelle'
+                  width={800}
+                  height={1000}
                   className='w-full h-[400px] sm:h-[500px] lg:h-[600px] object-cover'
                 />
                 <div className='absolute inset-0 bg-gradient-to-t from-black/20 to-transparent' />
