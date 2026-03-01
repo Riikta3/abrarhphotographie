@@ -99,7 +99,7 @@ export default function Hero() {
         <div className='text-lg sm:text-xl md:text-2xl mb-6 sm:mb-8 text-white/90 max-w-2xl mx-auto leading-relaxed px-2 space-y-2'>
           <h2>
             Basé en Seine-et-Marne (77) - Interventions à Paris, Marne-la-Vallée
-            et toute l'Île-de-France.
+            et toute l'Île-de-France
           </h2>
         </div>
 
