@@ -11,7 +11,7 @@ const portfolioSelection = [
     description:
       "Votre union célébrée avec passion dans les plus beaux décors d'Île-de-France. Chaque baiser, chaque regard, chaque sourire devient un trésor éternel.",
     image:
-      "/assets/generated_images/Elegant_French_wedding_photography_51d0cad8.png",
+      "/assets/galerie/services/photographe-mariage-seine-et-marne-ophelie-maxime.jpg",
     count: "200+ mariages",
     keywords:
       "photographe mariage seine-et-marne, mariage paris, photographe mariage ile-de-france",
@@ -21,7 +21,7 @@ const portfolioSelection = [
     description:
       "L'amour se raconte en images dans les jardins parisiens et les rives de Seine-et-Marne. Créons ensemble votre histoire d'amour en photos.",
     image:
-      "/assets/generated_images/Romantic_Paris_couple_session_10bb35d5.png",
+      "/assets/galerie/services/seance-couple-paris-estelle-augustin-romantique.jpg",
     count: "150+ séances",
     keywords:
       "séance couple paris, photographe couple seine-et-marne, engagement photo",
@@ -31,7 +31,7 @@ const portfolioSelection = [
     description:
       "Ces petits moments qui font la grandeur de la vie. De la douce attente à la joie partagée, chaque étape mérite d'être chérie.",
     image:
-      "/assets/generated_images/Joyful_family_portrait_session_84976749.png",
+      "/assets/galerie/services/seance-famille-maternite-seine-et-marne-pamela.jpg",
     count: "300+ familles",
     keywords:
       "photographe famille seine-et-marne, séance maternité paris, portrait famille",
@@ -40,7 +40,7 @@ const portfolioSelection = [
 
 export default function GalleryPage() {
   const galleryBackground =
-    "/assets/generated_images/Gallery_page_background_1712e0f1.png";
+    "/assets/home/carousel/photographe-mariage-chateau-ile-de-france-reception.jpg";
 
   return (
     <div className='min-h-screen'>

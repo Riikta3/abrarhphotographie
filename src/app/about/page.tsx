@@ -12,7 +12,8 @@ export default function AboutPage() {
       <PageHeader
         title="À Propos d'Abrar"
         subtitle='Découvrez mon parcours, ma passion et ma philosophie de la photographie.'
-        backgroundImage='/assets/generated_images/About_page_background_61b45b57.png'
+        backgroundImage='/assets/about/photographe-mariage-seine-et-marne-manon-micka-background.jpg'
+        backgroundPosition='bottom'
       />
 
       <About showStats={true} />

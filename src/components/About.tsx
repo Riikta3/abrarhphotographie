@@ -4,7 +4,7 @@ import { Award, Camera, Heart, Star } from "lucide-react";
 import NextImage from "next/image";
 
 const photographerImage =
-  "/assets/generated_images/Professional_photographer_portrait_c024e775.png";
+  "/assets/about/photographe-professionnelle-seine-et-marne-portrait.jpg";
 
 const values = [
   {

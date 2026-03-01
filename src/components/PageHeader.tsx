@@ -2,12 +2,14 @@ interface PageHeaderProps {
   title: string;
   subtitle: string;
   backgroundImage?: string;
+  backgroundPosition?: string;
 }
 
 export default function PageHeader({
   title,
   subtitle,
   backgroundImage,
+  backgroundPosition = "center",
 }: PageHeaderProps) {
   const defaultBg =
     "/assets/generated_images/Gallery_page_background_1712e0f1.png"; // Fallback
@@ -16,8 +18,11 @@ export default function PageHeader({
     <section className='relative py-24 sm:py-32 lg:py-40 overflow-hidden'>
       {/* Background Image */}
       <div
-        className='absolute inset-0 bg-cover bg-center bg-no-repeat'
-        style={{ backgroundImage: `url(${backgroundImage || defaultBg})` }}
+        className='absolute inset-0 bg-cover bg-no-repeat'
+        style={{
+          backgroundImage: `url(${backgroundImage || defaultBg})`,
+          backgroundPosition,
+        }}
       />
 
       {/* Dark Overlay */}

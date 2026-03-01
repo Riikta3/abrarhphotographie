@@ -3,11 +3,11 @@ import { Card, CardContent } from "@/components/ui/card";
 import NextImage from "next/image";
 
 const weddingImage =
-  "/assets/generated_images/Elegant_French_wedding_photography_51d0cad8.png";
+  "/assets/home/services/reportage-mariage-seine-et-marne.jpg";
 const familyImage =
-  "/assets/generated_images/Joyful_family_portrait_session_84976749.png";
+  "/assets/home/services/photographe-famille-maternite-ile-de-france.jpg";
 const coupleImage =
-  "/assets/generated_images/Romantic_Paris_couple_session_10bb35d5.png";
+  "/assets/home/services/seance-couple-romantique-paris-oksanna-xavier.jpg";
 
 const services = [
   {

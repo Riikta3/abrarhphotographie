@@ -5,90 +5,74 @@ import { ChevronLeft, ChevronRight, X } from "lucide-react";
 import NextImage from "next/image";
 import { useCallback, useEffect, useState } from "react";
 
-const coupleSeineImage =
-  "/assets/generated_images/Couple_engagement_Seine_riverbank_7223cd63.png";
-const coupleTrocadero =
-  "/assets/generated_images/Couple_Trocadéro_Eiffel_Tower_6338da06.png";
-const weddingImage =
-  "/assets/generated_images/Elegant_French_wedding_photography_51d0cad8.png";
-const familyLuxembourg =
-  "/assets/generated_images/Family_portrait_Luxembourg_Gardens_2f08af26.png";
-const familyImage =
-  "/assets/generated_images/Joyful_family_portrait_session_84976749.png";
-const coupleImage =
-  "/assets/generated_images/Romantic_Paris_couple_session_10bb35d5.png";
-const maternityImage =
-  "/assets/generated_images/Serene_maternity_portrait_a4b8ace0.png";
-const maternityStudio =
-  "/assets/generated_images/Studio_maternity_portrait_3e65dd7d.png";
-const weddingChurch =
-  "/assets/generated_images/Wedding_ceremony_in_church_38001092.png";
-const weddingReception =
-  "/assets/generated_images/Wedding_reception_château_52d31cf8.png";
+const coupleImage1 =
+  "/assets/home/galerie/couple/seance-couple-ile-de-france-oksanna-xavier.jpg";
+const coupleImage2 =
+  "/assets/home/galerie/couple/seance-couple-paris-estelle-augustin-1.jpg";
+const coupleImage3 =
+  "/assets/home/galerie/couple/seance-couple-paris-estelle-augustin-2.jpg";
+
+const familyImage1 =
+  "/assets/home/galerie/family/photographe-famille-seine-et-marne-pamela-alexis.jpg";
+const familyImage2 =
+  "/assets/home/galerie/family/seance-famille-nature-ile-de-france.jpg";
+const familyImage3 =
+  "/assets/home/galerie/family/photographe-maternite-seine-et-marne-grossesse.jpg";
+
+const weddingImage1 =
+  "/assets/home/galerie/wedding/photographe-mariage-ceremonie-seine-et-marne.jpg";
+const weddingImage2 =
+  "/assets/home/galerie/wedding/photographe-mariage-soiree-ile-de-france.jpg";
+const weddingImage3 =
+  "/assets/home/galerie/wedding/reportage-mariage-maryse-florent-paris.jpg";
 
 const categories = ["Tous", "Mariages", "Couples", "Familles & Maternité"];
 
 const galleryImages = [
   {
-    src: weddingImage,
+    src: weddingImage1,
     category: "Mariages",
-    alt: "Photographe mariage Seine-et-Marne - Cérémonie élégante en extérieur",
+    alt: "Photographe mariage Seine-et-Marne - Cérémonie",
   },
   {
-    src: weddingChurch,
+    src: weddingImage2,
     category: "Mariages",
-    alt: "Photographe mariage Paris - Cérémonie religieuse dans une église",
+    alt: "Photographe mariage Île-de-France - Soirée",
   },
   {
-    src: weddingReception,
+    src: weddingImage3,
     category: "Mariages",
-    alt: "Photographe mariage Île-de-France - Réception de mariage au château",
+    alt: "Reportage mariage Paris - Maryse et Florent",
   },
   {
-    src: coupleImage,
+    src: coupleImage1,
     category: "Couples",
-    alt: "Séance couple romantique Paris - Photographe couple Seine-et-Marne",
+    alt: "Séance couple Île-de-France - Oksanna et Xavier",
   },
   {
-    src: coupleSeineImage,
+    src: coupleImage2,
     category: "Couples",
-    alt: "Séance engagement bord de Seine - Photographe couple Paris",
+    alt: "Séance couple Paris - Estelle et Augustin",
   },
   {
-    src: coupleTrocadero,
+    src: coupleImage3,
     category: "Couples",
-    alt: "Couple au Trocadéro avec Tour Eiffel - Photographe couple Paris",
+    alt: "Séance engagement romantique Paris",
   },
   {
-    src: familyImage,
+    src: familyImage1,
     category: "Familles & Maternité",
-    alt: "Portrait famille joyeux - Photographe famille Seine-et-Marne",
+    alt: "Portrait famille Seine-et-Marne - Pamela et Alexis",
   },
   {
-    src: familyLuxembourg,
+    src: familyImage2,
     category: "Familles & Maternité",
-    alt: "Séance famille Jardin du Luxembourg - Photographe famille Paris",
+    alt: "Séance famille nature Île-de-France",
   },
   {
-    src: maternityImage,
+    src: familyImage3,
     category: "Familles & Maternité",
-    alt: "Séance maternité nature - Photographe maternité Seine-et-Marne",
-  },
-  {
-    src: maternityStudio,
-    category: "Familles & Maternité",
-    alt: "Portrait maternité studio - Photographe maternité Paris",
-  },
-  // Dupliquer quelques images pour remplir la galerie
-  {
-    src: weddingImage,
-    category: "Mariages",
-    alt: "Mariage champêtre romantique - Photographe mariage Île-de-France",
-  },
-  {
-    src: coupleImage,
-    category: "Couples",
-    alt: "Amour parisien - Séance couple romantique Paris",
+    alt: "Photographe maternité grossesse Seine-et-Marne",
   },
 ];
 
