@@ -26,7 +26,7 @@ const weddingChurch =
 const weddingReception =
   "/assets/generated_images/Wedding_reception_château_52d31cf8.png";
 
-const categories = ["Tous", "Mariages", "Couples", "Familles", "Maternité"];
+const categories = ["Tous", "Mariages", "Couples", "Familles & Maternité"];
 
 const galleryImages = [
   {
@@ -61,22 +61,22 @@ const galleryImages = [
   },
   {
     src: familyImage,
-    category: "Familles",
+    category: "Familles & Maternité",
     alt: "Portrait famille joyeux - Photographe famille Seine-et-Marne",
   },
   {
     src: familyLuxembourg,
-    category: "Familles",
+    category: "Familles & Maternité",
     alt: "Séance famille Jardin du Luxembourg - Photographe famille Paris",
   },
   {
     src: maternityImage,
-    category: "Maternité",
+    category: "Familles & Maternité",
     alt: "Séance maternité nature - Photographe maternité Seine-et-Marne",
   },
   {
     src: maternityStudio,
-    category: "Maternité",
+    category: "Familles & Maternité",
     alt: "Portrait maternité studio - Photographe maternité Paris",
   },
   // Dupliquer quelques images pour remplir la galerie
@@ -213,7 +213,7 @@ export default function Gallery() {
         </div>
 
         {/* Gallery Grid */}
-        <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 lg:gap-6'>
+        <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 lg:gap-6'>
           {filteredImages.map((image, index) => (
             <div
               key={index}

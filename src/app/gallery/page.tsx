@@ -36,15 +36,6 @@ const portfolioSelection = [
     keywords:
       "photographe famille seine-et-marne, séance maternité paris, portrait famille",
   },
-  {
-    title: "Séances Maternité Tendance",
-    description:
-      "La maternité dans toute sa splendeur naturelle. Ces neuf mois magiques transformés en souvenirs précieux pour l'éternité.",
-    image: "/assets/generated_images/Serene_maternity_portrait_a4b8ace0.png",
-    count: "100+ futures mamans",
-    keywords:
-      "séance maternité seine-et-marne, photographe maternité paris, grossesse photo",
-  },
 ];
 
 export default function GalleryPage() {
@@ -72,7 +63,7 @@ export default function GalleryPage() {
             </p>
           </div>
 
-          <div className='grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16'>
+          <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16'>
             {portfolioSelection.map((selection, index) => (
               <Card
                 key={index}
