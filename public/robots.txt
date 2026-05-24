@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+Disallow: /api/
+Disallow: /conditions-utilisation
+Disallow: /politique-de-confidentialite
+Disallow: /mentions-legales
+
+Sitemap: https://abrarh-photographie.fr/sitemap.xml
