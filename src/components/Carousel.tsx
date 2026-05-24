@@ -1,9 +1,9 @@
 const coupleCarousel =
-  "/assets/home/carousel/seance-engagement-paris-estelle-augustin.jpg";
+  "/assets/generated_images/Couple_carousel_image_48d3ae82.png";
 const familyCarousel =
-  "/assets/home/carousel/photographe-famille-exterieur-seine-et-marne-pamela.jpg";
+  "/assets/generated_images/Family_carousel_image_6ee3d582.png";
 const weddingCarousel =
-  "/assets/home/carousel/photographe-mariage-chateau-ile-de-france-reception.jpg";
+  "/assets/generated_images/Wedding_carousel_image_56d2de9c.png";
 
 const carouselImages = [
   {

@@ -11,7 +11,7 @@ const portfolioSelection = [
     description:
       "Votre union célébrée avec passion dans les plus beaux décors d'Île-de-France. Chaque baiser, chaque regard, chaque sourire devient un trésor éternel.",
     image:
-      "/assets/galerie/services/photographe-mariage-seine-et-marne-ophelie-maxime.jpg",
+      "/assets/generated_images/Elegant_French_wedding_photography_51d0cad8.png",
     count: "200+ mariages",
     keywords:
       "photographe mariage seine-et-marne, mariage paris, photographe mariage ile-de-france",
@@ -21,7 +21,7 @@ const portfolioSelection = [
     description:
       "L'amour se raconte en images dans les jardins parisiens et les rives de Seine-et-Marne. Créons ensemble votre histoire d'amour en photos.",
     image:
-      "/assets/galerie/services/seance-couple-paris-estelle-augustin-romantique.jpg",
+      "/assets/generated_images/Romantic_Paris_couple_session_10bb35d5.png",
     count: "150+ séances",
     keywords:
       "séance couple paris, photographe couple seine-et-marne, engagement photo",
@@ -31,16 +31,25 @@ const portfolioSelection = [
     description:
       "Ces petits moments qui font la grandeur de la vie. De la douce attente à la joie partagée, chaque étape mérite d'être chérie.",
     image:
-      "/assets/galerie/services/seance-famille-maternite-seine-et-marne-pamela.jpg",
+      "/assets/generated_images/Joyful_family_portrait_session_84976749.png",
     count: "300+ familles",
     keywords:
       "photographe famille seine-et-marne, séance maternité paris, portrait famille",
+  },
+  {
+    title: "Séances Maternité Tendance",
+    description:
+      "La maternité dans toute sa splendeur naturelle. Ces neuf mois magiques transformés en souvenirs précieux pour l'éternité.",
+    image: "/assets/generated_images/Serene_maternity_portrait_a4b8ace0.png",
+    count: "100+ futures mamans",
+    keywords:
+      "séance maternité seine-et-marne, photographe maternité paris, grossesse photo",
   },
 ];
 
 export default function GalleryPage() {
   const galleryBackground =
-    "/assets/home/carousel/photographe-mariage-chateau-ile-de-france-reception.jpg";
+    "/assets/generated_images/Gallery_page_background_1712e0f1.png";
 
   return (
     <div className='min-h-screen'>
@@ -63,7 +72,7 @@ export default function GalleryPage() {
             </p>
           </div>
 
-          <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16'>
+          <div className='grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16'>
             {portfolioSelection.map((selection, index) => (
               <Card
                 key={index}

@@ -32,7 +32,7 @@ const pricingInfo = [
 
 export default function ContactPage() {
   const contactBackground =
-    "/assets/contact/photographe-mariage-ile-de-france-manon-micka.jpg";
+    "/assets/generated_images/Contact_page_background_b496da34.png";
 
   return (
     <div className='min-h-screen'>

@@ -4,7 +4,7 @@ import { Award, Camera, Heart, Star } from "lucide-react";
 import NextImage from "next/image";
 
 const photographerImage =
-  "/assets/about/photographe-professionnelle-seine-et-marne-portrait.jpg";
+  "/assets/generated_images/Professional_photographer_portrait_c024e775.png";
 
 const values = [
   {
@@ -195,11 +195,9 @@ export default function About({ showStats = true }: AboutProps) {
             {/* Image */}
             <div className='relative group'>
               <div className='relative overflow-hidden rounded-2xl shadow-2xl'>
-                <NextImage
+                <img
                   src={photographerImage}
                   alt='Abrar H, Photographe Professionnelle'
-                  width={800}
-                  height={1000}
                   className='w-full h-[400px] sm:h-[500px] lg:h-[600px] object-cover'
                 />
                 <div className='absolute inset-0 bg-gradient-to-t from-black/20 to-transparent' />

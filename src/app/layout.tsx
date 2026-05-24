@@ -13,19 +13,16 @@ const lato = Lato({
   subsets: ["latin"],
   weight: ["400", "700"],
   variable: "--font-sans",
-  display: "swap",
 });
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
   variable: "--font-serif",
-  display: "swap",
 });
 
 const dancingScript = Dancing_Script({
   subsets: ["latin"],
   variable: "--font-script",
-  display: "swap",
 });
 
 export const metadata: Metadata = {

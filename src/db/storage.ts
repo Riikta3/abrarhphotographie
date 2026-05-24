@@ -1,5 +1,5 @@
+import { type User, type InsertUser } from "@shared/schema";
 import { randomUUID } from "crypto";
-import { type InsertUser, type User } from "./schema";
 
 // modify the interface with any CRUD methods
 // you might need

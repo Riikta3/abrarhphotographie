@@ -18,7 +18,7 @@ export default function TermsOfServicePage() {
     <>
       <PageHeader
         title="Conditions Générales d'Utilisation"
-        subtitle="Règles d'utilisation du site"
+        description="Règles d'utilisation du site"
       />
 
       <section className='py-16 sm:py-20'>
