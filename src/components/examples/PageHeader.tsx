@@ -6,7 +6,7 @@ export default function PageHeaderExample() {
     <PageHeader
       title="À Propos de Marie"
       subtitle="Découvrez mon parcours, ma passion et ma philosophie de la photographie."
-      backgroundImage={aboutBackground}
+      backgroundImage={aboutBackground.src}
     />
   );
 }
