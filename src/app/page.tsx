@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import About from "@/components/About";
 import Gallery from "@/components/Gallery";
 import Hero from "@/components/Hero";
@@ -26,7 +27,7 @@ export default function Home() {
       <Hero />
       <Services />
       <About showStats={false} />
-      <Gallery />
+      <Suspense fallback={null}><Gallery /></Suspense>
       <Testimonials />
     </div>
   );

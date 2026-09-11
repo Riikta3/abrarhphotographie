@@ -1,8 +1,6 @@
 import CookieBanner from "@/components/CookieBanner";
 import Footer from "@/components/Footer";
 import Navigation from "@/components/Navigation";
-import { QueryProvider } from "@/components/providers/QueryProvider";
-import { UIProviders } from "@/components/providers/UIProviders";
 import ScrollToTop from "@/components/ScrollToTop";
 import { Toaster } from "@/components/ui/toaster";
 import type { Metadata } from "next";
@@ -91,6 +89,24 @@ const businessJsonLd = {
     addressCountry: "FR",
   },
   geo: { "@type": "GeoCoordinates", latitude: 48.8483, longitude: 2.6234 },
+  // Fourchette indicative des forfaits (séances à partir de 250 €).
+  priceRange: "€€",
+  currenciesAccepted: "EUR",
+  openingHoursSpecification: [
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+      ],
+      opens: "09:00",
+      closes: "19:00",
+    },
+  ],
   areaServed: [
     { "@type": "City", name: "Marne-la-Vallée" },
     { "@type": "City", name: "Paris" },
@@ -135,18 +151,14 @@ export default function RootLayout({
         className={`${lato.variable} ${playfair.variable} ${dancingScript.variable} antialiased`}
         suppressHydrationWarning
       >
-        <QueryProvider>
-          <UIProviders>
-            <div className='min-h-screen bg-background'>
-              <Navigation />
-              <main role='main'>{children}</main>
-              <Footer />
-              <ScrollToTop />
-              <CookieBanner />
-            </div>
-            <Toaster />
-          </UIProviders>
-        </QueryProvider>
+        <div className='min-h-screen bg-background'>
+          <Navigation />
+          <main role='main'>{children}</main>
+          <Footer />
+          <ScrollToTop />
+          <CookieBanner />
+        </div>
+        <Toaster />
       </body>
     </html>
   );

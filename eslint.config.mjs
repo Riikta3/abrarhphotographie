@@ -23,11 +23,20 @@ const eslintConfig = [
   }),
   {
     rules: {
+      // Les apostrophes typographiques dans du texte français sont sûres :
+      // cette règle générerait surtout du bruit.
       "react/no-unescaped-entities": "off",
-      "@typescript-eslint/no-explicit-any": "off",
-      "@typescript-eslint/no-unused-vars": "off",
-      "@next/next/no-img-element": "off",
-      "react-hooks/exhaustive-deps": "off",
+
+      // Les règles ci-dessous étaient désactivées et masquaient de vrais
+      // défauts (dont un bug de closure dans la galerie). Passées en warn :
+      // elles remontent l'information sans bloquer le build.
+      "@typescript-eslint/no-explicit-any": "warn",
+      "@typescript-eslint/no-unused-vars": [
+        "warn",
+        { argsIgnorePattern: "^_", varsIgnorePattern: "^_" },
+      ],
+      "@next/next/no-img-element": "warn",
+      "react-hooks/exhaustive-deps": "warn",
     },
   },
 ];

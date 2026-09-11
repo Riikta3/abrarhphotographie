@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import Gallery from "@/components/Gallery";
 import PageHeader from "@/components/PageHeader";
 import { Button } from "@/components/ui/button";
@@ -73,7 +74,7 @@ export default function GalleryPage() {
             {portfolioSelection.map((selection, index) => (
               <Card key={index} className='overflow-hidden hover-elevate group' data-testid={`portfolio-${selection.title.toLowerCase().replace(/\s+/g, "-")}`}>
                 <div className='relative h-80'>
-                  <Image src={selection.image} alt={`${selection.title} — ${selection.keywords.split(",")[0].trim()}`} fill className='object-cover transition-transform duration-300 group-hover:scale-105' loading='lazy' />
+                  <Image src={selection.image} alt={selection.title} fill sizes='(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw' className='object-cover transition-transform duration-300 group-hover:scale-105' loading='lazy' />
                   <div className='absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent' />
                   <div className='absolute bottom-6 left-6 text-white'>
                     <div className='text-sm text-accent font-medium mb-2'>{selection.count}</div>
@@ -86,7 +87,7 @@ export default function GalleryPage() {
           </div>
         </div>
       </section>
-      <Gallery />
+      <Suspense fallback={null}><Gallery /></Suspense>
       <section className='py-24 bg-card'>
         <div className='max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center'>
           <h2 className='font-serif text-4xl md:text-5xl font-bold text-foreground mb-6'>

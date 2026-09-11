@@ -36,6 +36,18 @@ export default function ContactForm() {
    */
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    // Le Select Radix n'est pas un champ natif : la validation HTML5 du
+    // formulaire ne le couvre pas, on le vérifie donc explicitement.
+    if (!formData.service) {
+      toast({
+        title: "Type de séance manquant",
+        description: "Sélectionnez le type de séance souhaité pour continuer.",
+        variant: "destructive",
+      });
+      return;
+    }
+
     setIsSubmitting(true);
 
     try {
@@ -286,7 +298,6 @@ export default function ContactForm() {
                     <Input
                       id='date'
                       type='date'
-                      required
                       value={formData.date}
                       onChange={(e) => handleChange("date", e.target.value)}
                       data-testid='input-date'

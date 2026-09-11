@@ -1,58 +1,48 @@
-const coupleCarousel =
-  "/assets/generated_images/Couple_carousel_image_48d3ae82.png";
-const familyCarousel =
-  "/assets/generated_images/Family_carousel_image_6ee3d582.png";
-const weddingCarousel =
-  "/assets/generated_images/Wedding_carousel_image_56d2de9c.png";
-
-const carouselImages = [
-  {
-    src: weddingCarousel,
-    alt: "Mariage élégant en France",
-    title: "Mariages",
-    subtitle: "Votre jour le plus important",
-  },
-  {
-    src: coupleCarousel,
-    alt: "Séance couple à Paris",
-    title: "Couples",
-    subtitle: "Moments romantiques à Paris",
-  },
-  {
-    src: familyCarousel,
-    alt: "Portrait famille joyeux",
-    title: "Familles",
-    subtitle: "Souvenirs familiaux précieux",
-  },
-];
+import NextImage from "next/image";
+import { carouselImages } from "@/lib/carouselImages";
 
 interface CarouselProps {
   currentIndex: number;
 }
 
+/**
+ * Visuels de fond du hero.
+ *
+ * Les images passent par next/image (et non par une background-image CSS)
+ * pour trois raisons : l'optimisation AVIF/WebP s'applique, le premier
+ * visuel peut être marqué `priority` (c'est le LCP de la page d'accueil),
+ * et les textes alternatifs deviennent lisibles par Google Images.
+ */
 export default function Carousel({ currentIndex }: CarouselProps) {
   return (
     <div className='absolute inset-0 z-0'>
-      {/* Background Images */}
       {carouselImages.map((image, index) => (
         <div
-          key={index}
+          key={image.src}
           className={`absolute inset-0 transition-opacity duration-1000 ${
             index === currentIndex ? "opacity-100" : "opacity-0"
           }`}
+          aria-hidden={index === currentIndex ? undefined : true}
         >
-          <div
-            className='photo-filter absolute inset-0 bg-cover bg-center bg-no-repeat'
-            style={{ backgroundImage: `url(${image.src})` }}
+          <NextImage
+            src={image.src}
+            alt={image.alt}
+            fill
+            sizes='100vw'
+            className='photo-filter object-cover'
+            // La première slide est l'élément LCP : elle doit être chargée
+            // sans attendre, les suivantes peuvent être différées.
+            priority={index === 0}
+            loading={index === 0 ? undefined : "lazy"}
           />
         </div>
       ))}
 
-      {/* Image Info */}
+      {/* Légende de la slide courante */}
       <div className='absolute bottom-16 left-8 z-10 text-white'>
-        <h3 className='font-serif text-2xl md:text-3xl font-bold mb-1'>
+        <p className='font-serif text-2xl md:text-3xl font-bold mb-1'>
           {carouselImages[currentIndex].title}
-        </h3>
+        </p>
         <p className='text-white/80'>{carouselImages[currentIndex].subtitle}</p>
       </div>
     </div>

@@ -3,6 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { ChevronLeft, ChevronRight, X } from "lucide-react";
 import NextImage from "next/image";
+import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
 const coupleSeineImage =
@@ -79,21 +80,17 @@ const galleryImages = [
     category: "Maternité",
     alt: "Portrait maternité studio - Photographe maternité Paris",
   },
-  // Dupliquer quelques images pour remplir la galerie
-  {
-    src: weddingImage,
-    category: "Mariages",
-    alt: "Mariage champêtre romantique - Photographe mariage Île-de-France",
-  },
-  {
-    src: coupleImage,
-    category: "Couples",
-    alt: "Amour parisien - Séance couple romantique Paris",
-  },
 ];
 
 export default function Gallery() {
-  const [activeCategory, setActiveCategory] = useState("Tous");
+  // Le footer renvoie vers /gallery?categorie=Mariages : sans cette lecture,
+  // les quatre liens aboutissaient tous à la galerie non filtrée.
+  const searchParams = useSearchParams();
+  const requested = searchParams.get("categorie");
+  const initialCategory =
+    requested && categories.includes(requested) ? requested : "Tous";
+
+  const [activeCategory, setActiveCategory] = useState(initialCategory);
   const [lightboxImage, setLightboxImage] = useState<number | null>(null);
 
   const filteredImages =
@@ -158,13 +155,23 @@ export default function Gallery() {
     }
   };
 
-  // Ajouter les écouteurs d'événements clavier
+  // Ajouter les écouteurs d'événements clavier.
+  // `filteredImages` fait partie des dépendances : sans lui, le gestionnaire
+  // garderait l'ancienne liste après un changement de catégorie et naviguerait
+  // sur de mauvais index.
   useEffect(() => {
     document.addEventListener("keydown", handleKeyDown);
     return () => {
       document.removeEventListener("keydown", handleKeyDown);
     };
-  }, [lightboxImage]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [lightboxImage, filteredImages]);
+
+  // Le lightbox indexe la liste filtrée : changer de catégorie pendant qu'il
+  // est ouvert rendrait l'index invalide, donc on le referme.
+  useEffect(() => {
+    setLightboxImage(null);
+  }, [activeCategory]);
 
   // Gérer l'affichage du scroll to top quand le lightbox est ouvert
   useEffect(() => {
@@ -213,7 +220,7 @@ export default function Gallery() {
         <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 lg:gap-6'>
           {filteredImages.map((image, index) => (
             <div
-              key={index}
+              key={image.src}
               className='group relative overflow-hidden rounded-lg hover-elevate aspect-square cursor-pointer'
               data-testid={`gallery-image-${index}`}
               onClick={() => openLightbox(index)}
@@ -222,6 +229,7 @@ export default function Gallery() {
                 src={image.src}
                 alt={image.alt}
                 fill
+                sizes='(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw'
                 className='w-full h-full object-cover transition-transform duration-300 group-hover:scale-110'
                 loading='lazy'
               />
@@ -234,7 +242,7 @@ export default function Gallery() {
         </div>
 
         {/* Lightbox */}
-        {lightboxImage !== null && (
+        {lightboxImage !== null && filteredImages[lightboxImage] && (
           <div className='fixed inset-0 z-50 flex items-center justify-center bg-black/75 backdrop-blur-sm'>
             {/* Bouton fermer */}
             <button

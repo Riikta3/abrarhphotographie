@@ -25,10 +25,10 @@ export default function Footer() {
           <div>
             <h3 className='font-serif text-lg font-semibold mb-4'>Services</h3>
             <ul className='space-y-2 text-primary-foreground/80 text-sm'>
-              <li><Link href='/galerie?categorie=Mariages' data-testid='link-footer-mariages' className='hover:text-accent transition-colors'>Mariages</Link></li>
-              <li><Link href='/galerie?categorie=Couples' data-testid='link-footer-couples' className='hover:text-accent transition-colors'>Couples</Link></li>
-              <li><Link href='/galerie?categorie=Familles' data-testid='link-footer-familles' className='hover:text-accent transition-colors'>Familles</Link></li>
-              <li><Link href='/galerie?categorie=Maternité' data-testid='link-footer-maternite' className='hover:text-accent transition-colors'>Maternité</Link></li>
+              <li><Link href='/gallery?categorie=Mariages' data-testid='link-footer-mariages' className='hover:text-accent transition-colors'>Mariages</Link></li>
+              <li><Link href='/gallery?categorie=Couples' data-testid='link-footer-couples' className='hover:text-accent transition-colors'>Couples</Link></li>
+              <li><Link href='/gallery?categorie=Familles' data-testid='link-footer-familles' className='hover:text-accent transition-colors'>Familles</Link></li>
+              <li><Link href='/gallery?categorie=Maternité' data-testid='link-footer-maternite' className='hover:text-accent transition-colors'>Maternité</Link></li>
             </ul>
           </div>
           <div>

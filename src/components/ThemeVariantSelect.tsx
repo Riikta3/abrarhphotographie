@@ -27,20 +27,48 @@ export type ThemeVariantId = (typeof THEME_VARIANTS)[number]["id"];
 
 export const THEME_VARIANT_KEY = "theme-variant";
 
+/** Lecture de localStorage tolérante aux navigateurs qui le bloquent. */
+export function readStorage(key: string): string | null {
+  try {
+    return localStorage.getItem(key);
+  } catch {
+    return null;
+  }
+}
+
+/** Écriture de localStorage tolérante aux navigateurs qui le bloquent. */
+export function writeStorage(key: string, value: string) {
+  try {
+    localStorage.setItem(key, value);
+  } catch {
+    // Navigation privée ou stockage refusé : le choix reste actif pour la session.
+  }
+}
+
 export function applyThemeVariant(variant: string) {
   const root = document.documentElement;
 
   if (variant === "actuel") {
     root.removeAttribute("data-theme-variant");
-  } else {
-    root.setAttribute("data-theme-variant", variant);
+
+    // Retour au thème d'origine : on rend la main au réglage clair/sombre
+    // de l'utilisateur, sinon il resterait bloqué dans le mode imposé par
+    // la dernière variante essayée.
+    if (readStorage("theme") === "light") {
+      root.classList.remove("dark");
+    } else {
+      root.classList.add("dark");
+    }
+    return;
   }
+
+  root.setAttribute("data-theme-variant", variant);
 
   // La variante "nb-clair" est un thème clair : on retire .dark pour que
   // les composants qui testent la classe restent cohérents.
   if (variant === "nb-clair") {
     root.classList.remove("dark");
-  } else if (variant !== "actuel") {
+  } else {
     root.classList.add("dark");
   }
 }
@@ -50,9 +78,12 @@ export default function ThemeVariantSelect() {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    const saved = localStorage.getItem(THEME_VARIANT_KEY);
+    const saved = readStorage(THEME_VARIANT_KEY);
     if (saved && THEME_VARIANTS.some((v) => v.id === saved)) {
       setVariant(saved);
+      // On réapplique au montage : si le script anti-flash du layout n'a pas
+      // pu s'exécuter, le DOM serait sinon désynchronisé du menu affiché.
+      applyThemeVariant(saved);
     }
   }, []);
 
@@ -78,11 +109,7 @@ export default function ThemeVariantSelect() {
   const choose = (id: string) => {
     setVariant(id);
     applyThemeVariant(id);
-    try {
-      localStorage.setItem(THEME_VARIANT_KEY, id);
-    } catch {
-      // Navigation privée / stockage bloqué : le choix reste actif pour la session.
-    }
+    writeStorage(THEME_VARIANT_KEY, id);
     setOpen(false);
   };
 

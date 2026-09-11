@@ -48,7 +48,7 @@ export default function Services() {
           {services.map((service, index) => (
             <Card key={index} className='hover-elevate overflow-hidden group flex flex-col' data-testid={`card-service-${service.title.toLowerCase()}`}>
               <div className='relative h-48 sm:h-56 md:h-64 overflow-hidden'>
-                <NextImage src={service.image} alt={`${service.title} — ${service.keywords.split(",")[0].trim()}`} fill className='w-full h-full object-cover transition-transform duration-300 group-hover:scale-105' loading='lazy' />
+                <NextImage src={service.image} alt={service.title} fill sizes='(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw' className='w-full h-full object-cover transition-transform duration-300 group-hover:scale-105' loading='lazy' />
                 <div className='absolute inset-0 bg-gradient-to-t from-black/60 to-transparent' />
                 <div className='absolute bottom-3 sm:bottom-4 left-3 sm:left-4 text-white'>
                   <h3 className='font-serif text-xl sm:text-2xl font-bold'>{service.title}</h3>

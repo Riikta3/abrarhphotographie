@@ -8,24 +8,9 @@ const testimonials = [
   { name: "Emma & Lucas", service: "Couple", rating: 5, text: "Séance couple inoubliable dans Paris. Abrar nous a guidés avec bienveillance et professionnalisme. Les résultats dépassent nos attentes !", date: "Juin 2024" },
 ];
 
-const reviewSchema = {
-  "@context": "https://schema.org",
-  "@type": "ProfessionalService",
-  "@id": "https://abrarh-photographie.fr/#business",
-  "name": "Abrar H Photographie",
-  "aggregateRating": { "@type": "AggregateRating", "ratingValue": "5", "reviewCount": "4", "bestRating": "5", "worstRating": "1" },
-  "review": [
-    { "@type": "Review", "author": { "@type": "Person", "name": "Sophie & Alexandre" }, "datePublished": "2024-09-01", "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }, "reviewBody": "Abrar a su capturer l'essence de notre mariage avec une sensibilité remarquable." },
-    { "@type": "Review", "author": { "@type": "Person", "name": "Claire" }, "datePublished": "2024-08-01", "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }, "reviewBody": "Séance maternité magique ! Abrar m'a mise à l'aise immédiatement." },
-    { "@type": "Review", "author": { "@type": "Person", "name": "Famille Martin" }, "datePublished": "2024-07-01", "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }, "reviewBody": "Photos de famille naturelles et pleines de vie. Abrar a réussi à capturer la personnalité de chacun de nos enfants." },
-    { "@type": "Review", "author": { "@type": "Person", "name": "Emma & Lucas" }, "datePublished": "2024-06-01", "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }, "reviewBody": "Séance couple inoubliable dans Paris. Abrar nous a guidés avec bienveillance et professionnalisme." },
-  ],
-};
-
 export default function Testimonials() {
   return (
     <>
-      <script type='application/ld+json' dangerouslySetInnerHTML={{ __html: JSON.stringify(reviewSchema) }} />
       <section className="py-16 sm:py-20 lg:py-24 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 sm:mb-16">

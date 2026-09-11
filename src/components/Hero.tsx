@@ -4,16 +4,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, ChevronLeft, ChevronRight, Pause, Play } from "lucide-react";
 import { useEffect, useState } from "react";
 import Carousel from "./Carousel";
-
-const coupleCarousel = "/assets/generated_images/Couple_carousel_image_48d3ae82.png";
-const familyCarousel = "/assets/generated_images/Family_carousel_image_6ee3d582.png";
-const weddingCarousel = "/assets/generated_images/Wedding_carousel_image_56d2de9c.png";
-
-const carouselImages = [
-  { src: weddingCarousel, alt: "Photographe mariage storytelling Seine-et-Marne — reportage immersif 77", title: "Mariages", subtitle: "Votre jour le plus important" },
-  { src: coupleCarousel, alt: "Taxi photo tour Paris — séance couple romantique Trocadéro et bords de Seine", title: "Couples", subtitle: "Taxi photo tour Paris" },
-  { src: familyCarousel, alt: "Photographe famille Chelles Marne-la-Vallée — shooting famille sur le vif IDF", title: "Familles", subtitle: "Séances famille Chelles & IDF" },
-];
+import { carouselImages } from "@/lib/carouselImages";
 
 export default function Hero() {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -47,7 +38,7 @@ export default function Hero() {
           <span className='block font-script text-accent-on-photo text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl'>Seine-et-Marne</span>
         </h1>
         <div className='text-lg sm:text-xl md:text-2xl mb-6 sm:mb-8 text-white/90 max-w-2xl mx-auto leading-relaxed px-2 space-y-2'>
-          <h2>Reportage immersif & storytelling — Marne-la-Vallée (77), Paris et toute l'Île-de-France.</h2>
+          <p>Reportage immersif &amp; storytelling — Marne-la-Vallée (77), Paris et toute l&apos;Île-de-France.</p>
         </div>
         <div className='flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center max-w-md sm:max-w-none mx-auto relative z-50'>
           <Button size='lg' data-testid='button-portfolio' className='bg-accent-on-photo text-black font-medium px-6 sm:px-8 py-3 w-full sm:w-auto min-h-12 border-0 cursor-pointer' asChild>
@@ -65,16 +56,18 @@ export default function Hero() {
           </a>
         </div>
       </div>
-      <div className='hidden lg:block'>
-        <div className='absolute inset-0 pointer-events-none group'></div>
-        <button className='absolute left-6 top-1/2 -translate-y-1/2 bg-black/20 hover:bg-black/40 text-white/70 hover:text-white rounded-full w-10 h-10 flex items-center justify-center transition-all duration-300 opacity-0 group-hover:opacity-100 z-40' onClick={goToPrevious} data-testid='carousel-prev' aria-label='Image précédente' type='button'><ChevronLeft className='h-5 w-5' /></button>
-        <button className='absolute right-6 top-1/2 -translate-y-1/2 bg-black/20 hover:bg-black/40 text-white/70 hover:text-white rounded-full w-10 h-10 flex items-center justify-center transition-all duration-300 opacity-0 group-hover:opacity-100 z-40' onClick={goToNext} data-testid='carousel-next' aria-label='Image suivante' type='button'><ChevronRight className='h-5 w-5' /></button>
-        <div className='absolute bottom-8 left-1/2 -translate-x-1/2 flex space-x-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-40'>
+      {/* `group` doit être sur un ANCÊTRE des boutons : posée sur un frère,
+          la variante group-hover ne se déclenchait jamais et les contrôles
+          restaient invisibles tout en restant focusables au clavier. */}
+      <div className='hidden lg:block group absolute inset-0 z-40 pointer-events-none'>
+        <button className='absolute left-6 top-1/2 -translate-y-1/2 bg-black/20 hover:bg-black/40 text-white/70 hover:text-white rounded-full w-10 h-10 flex items-center justify-center transition-all duration-300 opacity-0 group-hover:opacity-100 pointer-events-auto z-40' onClick={goToPrevious} data-testid='carousel-prev' aria-label='Image précédente' type='button'><ChevronLeft className='h-5 w-5' /></button>
+        <button className='absolute right-6 top-1/2 -translate-y-1/2 bg-black/20 hover:bg-black/40 text-white/70 hover:text-white rounded-full w-10 h-10 flex items-center justify-center transition-all duration-300 opacity-0 group-hover:opacity-100 pointer-events-auto z-40' onClick={goToNext} data-testid='carousel-next' aria-label='Image suivante' type='button'><ChevronRight className='h-5 w-5' /></button>
+        <div className='absolute bottom-8 left-1/2 -translate-x-1/2 flex space-x-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-auto z-40'>
           {carouselImages.map((_, index) => (
             <button key={index} className={`w-3 h-3 rounded-full transition-all duration-300 ${index === currentIndex ? "bg-accent-on-photo/80" : "bg-white/30 hover:bg-white/60"}`} onClick={() => goToSlide(index)} data-testid={`carousel-dot-${index}`} aria-label={`Aller à l'image ${index + 1}`} type='button' />
           ))}
         </div>
-        <button className='absolute top-6 right-6 bg-black/20 hover:bg-black/40 text-white/70 hover:text-white rounded-full w-8 h-8 flex items-center justify-center transition-all duration-300 opacity-0 group-hover:opacity-100 z-40' onClick={() => setIsAutoPlay(!isAutoPlay)} aria-label={isAutoPlay ? "Pause le carousel" : "Reprendre le carousel"} type='button'>
+        <button className='absolute top-6 right-6 bg-black/20 hover:bg-black/40 text-white/70 hover:text-white rounded-full w-8 h-8 flex items-center justify-center transition-all duration-300 opacity-0 group-hover:opacity-100 pointer-events-auto z-40' onClick={() => setIsAutoPlay(!isAutoPlay)} aria-label={isAutoPlay ? "Pause le carousel" : "Reprendre le carousel"} type='button'>
           {isAutoPlay ? <Pause className='h-3 w-3' /> : <Play className='h-3 w-3 ml-0.5' />}
         </button>
       </div>

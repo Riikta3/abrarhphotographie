@@ -170,60 +170,54 @@ export function getThumbnailUrl(photo: StrapiPhoto): string {
  * @param data - Contact form data
  * @returns Success response
  */
+/**
+ * Envoie le formulaire de contact vers la route API interne (/api/contact).
+ *
+ * L'appel est volontairement relatif : il part vers la même origine que la page,
+ * donc il fonctionne en production sans dépendre d'une URL publique. C'est la
+ * route serveur qui relaie ensuite vers Strapi et/ou envoie l'email, avec ses
+ * propres secrets — jamais exposés au navigateur.
+ *
+ * Aucune donnée personnelle n'est journalisée côté client.
+ */
 export async function submitContactForm(
-  data: ContactSubmissionData
+  data: ContactSubmissionData & { website?: string }
 ): Promise<{ success: boolean; message: string }> {
+  let response: Response;
+
   try {
-    console.log(
-      "Submitting contact form to:",
-      `${API_URL}/contact-submissions`
-    );
-    console.log("Form data:", data);
-
-    const response = await fetch(`${API_URL}/contact-submissions`, {
+    response = await fetch("/api/contact", {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ data }),
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+      // Évite qu'un serveur injoignable laisse le bouton bloqué indéfiniment.
+      signal: AbortSignal.timeout(15000),
     });
-
-    console.log("Response status:", response.status);
-
-    if (!response.ok) {
-      const error = await response
-        .json()
-        .catch(() => ({
-          error: { message: `HTTP ${response.status}: ${response.statusText}` },
-        }));
-      console.error("Error response:", error);
-
-      // More detailed error messages based on status code
-      if (response.status === 403) {
-        throw new Error(
-          "Accès refusé. Veuillez réessayer ou nous contacter directement."
-        );
-      } else if (response.status === 400) {
-        throw new Error(
-          error.error?.message || "Données invalides. Vérifiez votre saisie."
-        );
-      } else if (response.status === 500) {
-        throw new Error("Erreur serveur. Veuillez réessayer plus tard.");
-      }
-
-      throw new Error(error.error?.message || "Échec de l'envoi du formulaire");
-    }
-
-    const result = await response.json();
-    console.log("Success response:", result);
-
-    return {
-      success: true,
-      message:
-        "Votre demande a été envoyée avec succès. Nous vous recontacterons rapidement !",
-    };
   } catch (error) {
-    console.error("Error submitting contact form:", error);
-    throw error;
+    if (error instanceof DOMException && error.name === "TimeoutError") {
+      throw new Error(
+        "Le serveur met trop de temps à répondre. Réessayez dans un instant."
+      );
+    }
+    throw new Error(
+      "Impossible de joindre le serveur. Vérifiez votre connexion."
+    );
   }
+
+  const payload = await response
+    .json()
+    .catch(() => ({}) as { error?: string; message?: string });
+
+  if (!response.ok) {
+    throw new Error(
+      payload.error || "Échec de l'envoi du formulaire. Veuillez réessayer."
+    );
+  }
+
+  return {
+    success: true,
+    message:
+      payload.message ||
+      "Votre demande a été envoyée avec succès. Nous vous recontacterons rapidement !",
+  };
 }

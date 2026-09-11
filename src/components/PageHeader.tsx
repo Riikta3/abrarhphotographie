@@ -1,23 +1,34 @@
+import NextImage from "next/image";
+
 interface PageHeaderProps {
   title: string;
   subtitle: string;
   backgroundImage?: string;
+  /** Texte alternatif du visuel de fond. Vide = image purement décorative. */
+  backgroundAlt?: string;
 }
 
 export default function PageHeader({
   title,
   subtitle,
   backgroundImage,
+  backgroundAlt = "",
 }: PageHeaderProps) {
   const defaultBg =
     "/assets/generated_images/Gallery_page_background_1712e0f1.png"; // Fallback
 
   return (
     <section className='relative py-24 sm:py-32 lg:py-40 overflow-hidden'>
-      {/* Background Image */}
-      <div
-        className='photo-filter absolute inset-0 bg-cover bg-center bg-no-repeat'
-        style={{ backgroundImage: `url(${backgroundImage || defaultBg})` }}
+      {/* Visuel de fond : next/image plutôt qu'une background-image CSS, pour
+          bénéficier de l'optimisation AVIF/WebP et du chargement prioritaire —
+          c'est l'élément LCP de ces pages. */}
+      <NextImage
+        src={backgroundImage || defaultBg}
+        alt={backgroundAlt}
+        fill
+        sizes='100vw'
+        priority
+        className='photo-filter object-cover'
       />
 
       {/* Dark Overlay */}

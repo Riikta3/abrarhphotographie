@@ -2,6 +2,13 @@
 
 import { useEffect, useState } from "react";
 
+declare global {
+  interface Window {
+    gtag?: (...args: unknown[]) => void;
+  }
+}
+
+
 export type ConsentType = "necessary" | "analytics" | "marketing";
 
 export interface ConsentPreferences {
@@ -86,7 +93,11 @@ export function useConsent() {
       analytics: false,
       marketing: false,
     });
-    localStorage.setItem(BANNER_DISMISSED_KEY, "true");
+    try {
+      localStorage.setItem(BANNER_DISMISSED_KEY, "true");
+    } catch {
+      // Stockage bloqué : la bannière réapparaîtra, mais rien ne casse.
+    }
   };
 
   const rejectAll = () => {
@@ -135,24 +146,24 @@ export function useConsent() {
 }
 
 function enableAnalytics() {
-  if (typeof window !== "undefined" && (window as any).gtag) {
-    (window as any).gtag("consent", "update", {
+  if (typeof window !== "undefined" && window.gtag) {
+    window.gtag("consent", "update", {
       analytics_storage: "granted",
     });
   }
 }
 
 function disableAnalytics() {
-  if (typeof window !== "undefined" && (window as any).gtag) {
-    (window as any).gtag("consent", "update", {
+  if (typeof window !== "undefined" && window.gtag) {
+    window.gtag("consent", "update", {
       analytics_storage: "denied",
     });
   }
 }
 
 function enableMarketing() {
-  if (typeof window !== "undefined" && (window as any).gtag) {
-    (window as any).gtag("consent", "update", {
+  if (typeof window !== "undefined" && window.gtag) {
+    window.gtag("consent", "update", {
       ad_storage: "granted",
       ad_user_data: "granted",
       ad_personalization: "granted",
@@ -161,8 +172,8 @@ function enableMarketing() {
 }
 
 function disableMarketing() {
-  if (typeof window !== "undefined" && (window as any).gtag) {
-    (window as any).gtag("consent", "update", {
+  if (typeof window !== "undefined" && window.gtag) {
+    window.gtag("consent", "update", {
       ad_storage: "denied",
       ad_user_data: "denied",
       ad_personalization: "denied",

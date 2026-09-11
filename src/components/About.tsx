@@ -194,11 +194,13 @@ export default function About({ showStats = true }: AboutProps) {
           <div className='grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center'>
             {/* Image */}
             <div className='relative group'>
-              <div className='relative overflow-hidden rounded-2xl shadow-2xl'>
-                <img
+              <div className='relative h-[400px] sm:h-[500px] lg:h-[600px] overflow-hidden rounded-2xl shadow-2xl'>
+                <NextImage
                   src={photographerImage}
-                  alt='Abrar H, Photographe Professionnelle'
-                  className='w-full h-[400px] sm:h-[500px] lg:h-[600px] object-cover'
+                  alt='Abrar H, photographe professionnelle en Seine-et-Marne'
+                  fill
+                  sizes='(max-width: 1024px) 100vw, 50vw'
+                  className='object-cover'
                 />
                 <div className='absolute inset-0 bg-gradient-to-t from-black/20 to-transparent' />
               </div>
