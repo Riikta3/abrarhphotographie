@@ -75,6 +75,13 @@
   --chart-4: 45 70% 40%;
   --chart-5: 280 30% 45%;
 
+  /* Filtre appliqué aux photos — piloté par les variantes de thème */
+  --photo-filter: none;
+
+  /* Accent posé sur une photo assombrie (hero, bandeaux).
+     Toujours clair : le voile noir reste sombre quel que soit le thème. */
+  --accent-on-photo: 45 35% 75%;
+
   --font-sans: "Lato", sans-serif;
   --font-serif: "Playfair Display", serif;
   --font-script: "Dancing Script", cursive;
@@ -207,6 +214,157 @@
 
 }
 
+/* ============================================================
+   VARIANTES DE THÈME — prévisualisation client
+   ------------------------------------------------------------
+   Ces blocs ne redéfinissent QUE les tokens de couleur.
+   Ils sont placés APRÈS .dark volontairement : même spécificité
+   (0-1-0), donc c'est l'ordre source qui tranche et la variante
+   l'emporte sur .dark / :root.
+
+   Pour figer le thème définitif : reporter les valeurs retenues
+   dans :root et .dark, puis supprimer ce bloc et le sélecteur.
+   ============================================================ */
+
+/* N&B — UI désaturée, photos conservées en couleur */
+[data-theme-variant="nb-photos"] {
+  --background: 0 0% 9%;
+  --foreground: 0 0% 92%;
+  --border: 0 0% 24%;
+  --card: 0 0% 14%;
+  --card-foreground: 0 0% 92%;
+  --card-border: 0 0% 26%;
+  --popover: 0 0% 14%;
+  --popover-foreground: 0 0% 92%;
+  --popover-border: 0 0% 26%;
+  --primary: 0 0% 92%;
+  --primary-foreground: 0 0% 9%;
+  --secondary: 0 0% 22%;
+  --secondary-foreground: 0 0% 92%;
+  --muted: 0 0% 18%;
+  --muted-foreground: 0 0% 65%;
+  --accent: 0 0% 88%;
+  --accent-foreground: 0 0% 9%;
+  --sidebar: 0 0% 12%;
+  --sidebar-foreground: 0 0% 92%;
+  --sidebar-border: 0 0% 22%;
+  --sidebar-primary: 0 0% 92%;
+  --sidebar-primary-foreground: 0 0% 9%;
+  --sidebar-accent: 0 0% 22%;
+  --sidebar-accent-foreground: 0 0% 92%;
+  --sidebar-ring: 0 0% 60%;
+  --input: 0 0% 25%;
+  --ring: 0 0% 70%;
+  --accent-on-photo: 0 0% 90%;
+  --photo-filter: none;
+}
+
+/* N&B intégral — photos désaturées également */
+[data-theme-variant="nb-total"] {
+  --background: 0 0% 9%;
+  --foreground: 0 0% 92%;
+  --border: 0 0% 24%;
+  --card: 0 0% 14%;
+  --card-foreground: 0 0% 92%;
+  --card-border: 0 0% 26%;
+  --popover: 0 0% 14%;
+  --popover-foreground: 0 0% 92%;
+  --popover-border: 0 0% 26%;
+  --primary: 0 0% 92%;
+  --primary-foreground: 0 0% 9%;
+  --secondary: 0 0% 22%;
+  --secondary-foreground: 0 0% 92%;
+  --muted: 0 0% 18%;
+  --muted-foreground: 0 0% 65%;
+  --accent: 0 0% 88%;
+  --accent-foreground: 0 0% 9%;
+  --sidebar: 0 0% 12%;
+  --sidebar-foreground: 0 0% 92%;
+  --sidebar-border: 0 0% 22%;
+  --sidebar-primary: 0 0% 92%;
+  --sidebar-primary-foreground: 0 0% 9%;
+  --sidebar-accent: 0 0% 22%;
+  --sidebar-accent-foreground: 0 0% 92%;
+  --sidebar-ring: 0 0% 60%;
+  --input: 0 0% 25%;
+  --ring: 0 0% 70%;
+  --accent-on-photo: 0 0% 90%;
+  --photo-filter: grayscale(1) contrast(1.06);
+}
+
+/* N&B chaud — gris légèrement teintés (rendu argentique), photos couleur */
+[data-theme-variant="nb-chaud"] {
+  --background: 40 7% 10%;
+  --foreground: 40 12% 91%;
+  --border: 40 6% 25%;
+  --card: 40 7% 15%;
+  --card-foreground: 40 12% 91%;
+  --card-border: 40 6% 27%;
+  --popover: 40 7% 15%;
+  --popover-foreground: 40 12% 91%;
+  --popover-border: 40 6% 27%;
+  --primary: 40 12% 91%;
+  --primary-foreground: 40 7% 10%;
+  --secondary: 40 6% 23%;
+  --secondary-foreground: 40 12% 91%;
+  --muted: 40 6% 19%;
+  --muted-foreground: 40 8% 64%;
+  --accent: 40 14% 86%;
+  --accent-foreground: 40 7% 10%;
+  --sidebar: 40 7% 13%;
+  --sidebar-foreground: 40 12% 91%;
+  --sidebar-border: 40 6% 23%;
+  --sidebar-primary: 40 12% 91%;
+  --sidebar-primary-foreground: 40 7% 10%;
+  --sidebar-accent: 40 6% 23%;
+  --sidebar-accent-foreground: 40 12% 91%;
+  --sidebar-ring: 40 10% 60%;
+  --input: 40 6% 26%;
+  --ring: 40 10% 70%;
+  --accent-on-photo: 40 14% 88%;
+  --photo-filter: none;
+}
+
+/* N&B clair — fond blanc, photos désaturées (registre galerie) */
+[data-theme-variant="nb-clair"] {
+  --background: 0 0% 99%;
+  --foreground: 0 0% 12%;
+  --border: 0 0% 87%;
+  --card: 0 0% 97%;
+  --card-foreground: 0 0% 12%;
+  --card-border: 0 0% 85%;
+  --popover: 0 0% 97%;
+  --popover-foreground: 0 0% 12%;
+  --popover-border: 0 0% 85%;
+  --primary: 0 0% 12%;
+  --primary-foreground: 0 0% 99%;
+  --secondary: 0 0% 93%;
+  --secondary-foreground: 0 0% 12%;
+  --muted: 0 0% 94%;
+  --muted-foreground: 0 0% 40%;
+  --accent: 0 0% 15%;
+  --accent-foreground: 0 0% 99%;
+  --sidebar: 0 0% 96%;
+  --sidebar-foreground: 0 0% 12%;
+  --sidebar-border: 0 0% 87%;
+  --sidebar-primary: 0 0% 12%;
+  --sidebar-primary-foreground: 0 0% 99%;
+  --sidebar-accent: 0 0% 90%;
+  --sidebar-accent-foreground: 0 0% 12%;
+  --sidebar-ring: 0 0% 45%;
+  --input: 0 0% 80%;
+  --ring: 0 0% 35%;
+  --accent-on-photo: 0 0% 95%;
+  --photo-filter: grayscale(1) contrast(1.04);
+
+  /* Fond clair : on repasse les surcouches hover en noir translucide */
+  --button-outline: rgba(0, 0, 0, .10);
+  --badge-outline: rgba(0, 0, 0, .05);
+  --opaque-button-border-intensity: -8;
+  --elevate-1: rgba(0, 0, 0, .03);
+  --elevate-2: rgba(0, 0, 0, .08);
+}
+
 @theme {
   --color-background: hsl(var(--background));
   --color-foreground: hsl(var(--foreground));
@@ -237,6 +395,7 @@
   --color-accent: hsl(var(--accent));
   --color-accent-foreground: hsl(var(--accent-foreground));
   --color-accent-border: var(--accent-border);
+  --color-accent-on-photo: hsl(var(--accent-on-photo));
   
   --color-destructive: hsl(var(--destructive));
   --color-destructive-foreground: hsl(var(--destructive-foreground));
@@ -288,6 +447,23 @@
 
   body {
     @apply font-sans antialiased bg-background text-foreground;
+  }
+
+  /* Désaturation des photos selon la variante de thème active.
+     Ciblé sur <img> uniquement : les icônes SVG (lucide-react) ne
+     sont pas touchées. Ajouter .no-photo-filter pour exclure une image.
+     .photo-filter couvre les visuels posés en background-image (carousel). */
+  img:not(.no-photo-filter),
+  .photo-filter {
+    filter: var(--photo-filter);
+    transition: filter 0.3s ease;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    img:not(.no-photo-filter),
+    .photo-filter {
+      transition: none;
+    }
   }
 }
 

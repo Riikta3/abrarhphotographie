@@ -123,6 +123,13 @@ export default function RootLayout({
           type='application/ld+json'
           dangerouslySetInnerHTML={{ __html: JSON.stringify(businessJsonLd) }}
         />
+        {/* Applique la variante de thème avant le premier rendu (anti-flash).
+            Temporaire : à retirer avec ThemeVariantSelect une fois le thème arbitré. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var v=localStorage.getItem("theme-variant");if(!v||v==="actuel")return;var r=document.documentElement;r.setAttribute("data-theme-variant",v);if(v==="nb-clair"){r.classList.remove("dark")}else{r.classList.add("dark")}}catch(e){}})();`,
+          }}
+        />
       </head>
       <body
         className={`${lato.variable} ${playfair.variable} ${dancingScript.variable} antialiased`}

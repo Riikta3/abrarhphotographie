@@ -8,6 +8,13 @@ export default function ThemeToggle() {
   const [isDark, setIsDark] = useState(true);
 
   useEffect(() => {
+    // La variante "nb-clair" impose déjà son propre mode clair :
+    // on ne réapplique pas le light/dark pour ne pas l'écraser.
+    if (localStorage.getItem("theme-variant") === "nb-clair") {
+      setIsDark(false);
+      return;
+    }
+
     // Check for saved theme preference or default to dark mode
     const savedTheme = localStorage.getItem("theme");
 

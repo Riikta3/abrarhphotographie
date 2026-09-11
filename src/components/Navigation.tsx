@@ -6,6 +6,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import ThemeToggle from "./ThemeToggle";
+import ThemeVariantSelect from "./ThemeVariantSelect";
 
 export default function Navigation() {
   const pathname = usePathname();
@@ -48,6 +49,7 @@ export default function Navigation() {
                 {item.label}
               </Link>
             ))}
+            <ThemeVariantSelect />
             <ThemeToggle />
           </div>
 
@@ -86,10 +88,14 @@ export default function Navigation() {
                 {item.label}
               </Link>
             ))}
-            <div className='pt-4 border-t border-border'>
+            <div className='pt-4 border-t border-border space-y-3'>
               <div className='flex items-center justify-between'>
                 <span className='text-sm text-muted-foreground'>Thème</span>
                 <ThemeToggle />
+              </div>
+              <div className='flex items-center justify-between gap-3'>
+                <span className='text-sm text-muted-foreground'>Palette</span>
+                <ThemeVariantSelect />
               </div>
             </div>
           </div>

@@ -42,7 +42,7 @@ export default function Carousel({ currentIndex }: CarouselProps) {
           }`}
         >
           <div
-            className='absolute inset-0 bg-cover bg-center bg-no-repeat'
+            className='photo-filter absolute inset-0 bg-cover bg-center bg-no-repeat'
             style={{ backgroundImage: `url(${image.src})` }}
           />
         </div>

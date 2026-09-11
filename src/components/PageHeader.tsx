@@ -16,7 +16,7 @@ export default function PageHeader({
     <section className='relative py-24 sm:py-32 lg:py-40 overflow-hidden'>
       {/* Background Image */}
       <div
-        className='absolute inset-0 bg-cover bg-center bg-no-repeat'
+        className='photo-filter absolute inset-0 bg-cover bg-center bg-no-repeat'
         style={{ backgroundImage: `url(${backgroundImage || defaultBg})` }}
       />
 
