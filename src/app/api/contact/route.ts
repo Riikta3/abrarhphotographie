@@ -4,8 +4,8 @@ import { z } from "zod";
 /**
  * Route de réception du formulaire de contact.
  *
- * Le navigateur poste ici (même origine), jamais directement vers Strapi :
- * les secrets et l'URL du CMS restent côté serveur.
+ * Le navigateur poste ici (même origine) ; la clé d'envoi reste côté serveur
+ * et n'est jamais exposée au visiteur.
  *
  * Journalisation : on ne logge JAMAIS le contenu du message ni les
  * coordonnées du visiteur (RGPD). Seuls des compteurs anonymes sont tracés.
@@ -52,6 +52,11 @@ function isRateLimited(ip: string): boolean {
   return recent.length > RATE_LIMIT_MAX;
 }
 
+/** Neutralise les retours à la ligne pour éviter l'injection d'en-têtes email. */
+function singleLine(value: string): string {
+  return value.replace(/[\r\n]+/g, " ").trim();
+}
+
 export async function POST(req: Request) {
   const ip =
     req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ||
@@ -71,7 +76,10 @@ export async function POST(req: Request) {
   const raw = await req.text();
 
   if (raw.length > MAX_BODY_BYTES) {
-    return NextResponse.json({ error: "Message trop volumineux." }, { status: 413 });
+    return NextResponse.json(
+      { error: "Message trop volumineux." },
+      { status: 413 },
+    );
   }
 
   let parsedJson: unknown;
@@ -92,23 +100,27 @@ export async function POST(req: Request) {
 
   const { website, ...submission } = parsed.data;
 
+  const successResponse = NextResponse.json({
+    success: true,
+    message:
+      "Votre demande a été envoyée avec succès. Nous vous recontacterons rapidement !",
+  });
+
   // Honeypot rempli : c'est un robot. On répond comme si tout s'était bien
   // passé pour ne pas lui indiquer qu'il a été filtré, mais on ne traite rien.
   if (website && website.trim() !== "") {
-    return NextResponse.json({
-      success: true,
-      message:
-        "Votre demande a été envoyée avec succès. Nous vous recontacterons rapidement !",
-    });
+    return successResponse;
   }
 
-  const strapiUrl = process.env.STRAPI_URL ?? process.env.NEXT_PUBLIC_STRAPI_URL;
+  const apiKey = process.env.RESEND_API_KEY;
+  const to = process.env.CONTACT_TO_EMAIL;
+  const from = process.env.CONTACT_FROM_EMAIL;
 
-  // Sans CMS configuré, on ne prétend pas avoir transmis la demande :
-  // le visiteur doit savoir qu'il faut passer par un autre canal.
-  if (!strapiUrl) {
+  // Sans service d'envoi configuré, on ne prétend pas avoir transmis la
+  // demande : le visiteur doit savoir qu'il faut passer par un autre canal.
+  if (!apiKey || !to || !from) {
     console.error(
-      "[contact] STRAPI_URL absent : la demande n'a pas pu être transmise.",
+      "[contact] Envoi non configuré (RESEND_API_KEY / CONTACT_TO_EMAIL / CONTACT_FROM_EMAIL).",
     );
     return NextResponse.json(
       {
@@ -119,36 +131,47 @@ export async function POST(req: Request) {
     );
   }
 
+  const lignes = [
+    `Nom : ${singleLine(submission.nom)}`,
+    `Email : ${singleLine(submission.email)}`,
+    submission.telephone ? `Téléphone : ${singleLine(submission.telephone)}` : null,
+    `Type de séance : ${singleLine(submission.service)}`,
+    submission.date ? `Date souhaitée : ${singleLine(submission.date)}` : null,
+    "",
+    submission.message,
+  ].filter(Boolean);
+
   try {
-    const response = await fetch(`${strapiUrl}/api/contact-submissions`, {
+    const response = await fetch("https://api.resend.com/emails", {
       method: "POST",
       headers: {
+        Authorization: `Bearer ${apiKey}`,
         "Content-Type": "application/json",
-        ...(process.env.STRAPI_TOKEN
-          ? { Authorization: `Bearer ${process.env.STRAPI_TOKEN}` }
-          : {}),
       },
-      body: JSON.stringify({ data: submission }),
+      body: JSON.stringify({
+        from,
+        to: [to],
+        // Répondre depuis la boîte mail renvoie directement au prospect.
+        reply_to: submission.email,
+        subject: `Demande de devis — ${singleLine(submission.service)} — ${singleLine(submission.nom)}`,
+        text: lignes.join("\n"),
+      }),
       signal: AbortSignal.timeout(10000),
     });
 
     if (!response.ok) {
       // Statut uniquement : le corps peut contenir les données du visiteur.
-      console.error(`[contact] Strapi a répondu ${response.status}`);
+      console.error(`[contact] Le service d'envoi a répondu ${response.status}`);
       return NextResponse.json(
         {
           error:
-            "Votre demande n'a pas pu être enregistrée. Réessayez ou contactez-nous par email.",
+            "Votre demande n'a pas pu être envoyée. Réessayez ou contactez-nous par email.",
         },
         { status: 502 },
       );
     }
 
-    return NextResponse.json({
-      success: true,
-      message:
-        "Votre demande a été envoyée avec succès. Nous vous recontacterons rapidement !",
-    });
+    return successResponse;
   } catch (error) {
     const reason =
       error instanceof DOMException && error.name === "TimeoutError"
@@ -159,7 +182,7 @@ export async function POST(req: Request) {
     return NextResponse.json(
       {
         error:
-          "Votre demande n'a pas pu être enregistrée. Réessayez ou contactez-nous par email.",
+          "Votre demande n'a pas pu être envoyée. Réessayez ou contactez-nous par email.",
       },
       { status: 502 },
     );

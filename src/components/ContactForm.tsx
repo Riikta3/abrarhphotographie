@@ -13,7 +13,7 @@ import {
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
-import { submitContactForm, type ContactSubmissionData } from "@/lib/strapiApi";
+import { submitContactForm, type ContactSubmissionData } from "@/lib/contact";
 import { Instagram, Mail, MapPin } from "lucide-react";
 import { useState } from "react";
 
@@ -31,7 +31,7 @@ export default function ContactForm() {
   const { toast } = useToast();
 
   /**
-   * Handle contact form submission via Strapi API
+   * Envoi du formulaire de contact vers /api/contact
    * @param e - Form submit event
    */
   const handleSubmit = async (e: React.FormEvent) => {
@@ -51,7 +51,7 @@ export default function ContactForm() {
     setIsSubmitting(true);
 
     try {
-      // Map form values to Strapi enum values
+      // Libellés attendus côté serveur
       const serviceMap: Record<string, ContactSubmissionData["service"]> = {
         mariage: "Mariage",
         couple: "Couple",
